@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>Projects | Peace Michael</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="index.html" aria-label="Peace Michael home">
+          <span class="brand-mark">PM</span>
+          <span class="brand-text">Peace Michael</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link active" href="projects.html">Projects</a>
+          <a class="nav-link" href="experience.html">Experience</a>
+          <a class="nav-link" href="skills.html">Skills</a>
+          <a class="nav-link" href="education.html">Education</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+          <a class="button button-small button-primary" href="assets/Peace-Michael-CV.pdf" download>Download CV</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Projects</p>
+            <h1>Featured data and business intelligence work</h1>
+          </div>
+          <div class="filter-group" role="tablist" aria-label="Project filters">
+            <button class="filter-pill active" data-filter="all">All Projects</button>
+            <button class="filter-pill" data-filter="data-analytics">Data Analytics</button>
+            <button class="filter-pill" data-filter="business-intelligence">Business Intelligence</button>
+            <button class="filter-pill" data-filter="cloud-data">Cloud &amp; Data Engineering</button>
+            <button class="filter-pill" data-filter="process-improvement">Business Process Improvement</button>
+          </div>
+          <div class="project-grid">
+            <article class="project-card" data-category="cloud-data">
+              <img src="assets/projects/azure-medallion-dashboard.svg" alt="Azure Medallion data pipeline preview" loading="lazy" />
+              <div class="project-content">
+                <p class="project-category">Cloud &amp; Data Engineering</p>
+                <h3>Azure Cloud BI and Medallion Data Pipeline</h3>
+                <p>Built a scalable data foundation to support reporting and analytics across structured business data.</p>
+              </div>
+            </article>
+            <article class="project-card" data-category="process-improvement">
+              <img src="assets/projects/netsuite-transformation.svg" alt="Oracle NetSuite transformation preview" loading="lazy" />
+              <div class="project-content">
+                <p class="project-category">Business Process Improvement</p>
+                <h3>Oracle NetSuite ERP Transformation</h3>
+                <p>Supported data migration and process readiness during an ERP transformation focused on operational continuity.</p>
+              </div>
+            </article>
+            <article class="project-card" data-category="business-intelligence">
+              <img src="assets/projects/executive-powerbi-dashboard.svg" alt="Executive Power BI dashboard preview" loading="lazy" />
+              <div class="project-content">
+                <p class="project-category">Business Intelligence</p>
+                <h3>Executive Power BI Suite</h3>
+                <p>Developed more than 40 Power BI metrics to help managers monitor sales, finance, HR and inventory performance.</p>
+              </div>
+            </article>
+            <article class="project-card" data-category="process-improvement">
+              <img src="assets/projects/workflow-process-map.svg" alt="Workflow and process map preview" loading="lazy" />
+              <div class="project-content">
+                <p class="project-category">Business Process Improvement</p>
+                <h3>Operations Process and Workflow Engineering</h3>
+                <p>Mapped operational workflows and improved handovers across functions.</p>
+              </div>
+            </article>
+            <article class="project-card" data-category="data-analytics">
+              <img src="assets/projects/incident-trends-dashboard.svg" alt="Incident trends preview" loading="lazy" />
+              <div class="project-content">
+                <p class="project-category">Data Analytics</p>
+                <h3>Incident Trends and Behavioural Intelligence</h3>
+                <p>Analysed incident patterns and operational data to reveal recurring issues and support monitoring.</p>
+              </div>
+            </article>
+            <article class="project-card" data-category="business-intelligence">
+              <img src="assets/projects/edtech-kpi-tracker.svg" alt="EdTech metrics preview" loading="lazy" />
+              <div class="project-content">
+                <p class="project-category">Business Intelligence</p>
+                <h3>EdTech Programme and Partner Metrics</h3>
+                <p>Tracked participant engagement and partner performance through structured reporting and dashboard views.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-shell">
+        <p>© 2026 Peace Michael</p>
+        <a href="#main-content">Back to top</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

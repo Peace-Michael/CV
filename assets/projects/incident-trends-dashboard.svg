@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Incident trends dashboard placeholder">
+  <rect width="800" height="500" rx="28" fill="#F8FAFC"/>
+  <rect x="90" y="90" width="620" height="320" rx="24" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  <path d="M140 330C220 270 260 240 320 220C400 190 480 140 610 150" stroke="#2563EB" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <circle cx="320" cy="220" r="10" fill="#0F766E"/>
+  <circle cx="610" cy="150" r="10" fill="#C59D45"/>
+  <text x="120" y="410" font-family="Segoe UI, Arial" font-size="24" fill="#475569">Incident trends and behavioural intelligence preview</text>
+</svg>

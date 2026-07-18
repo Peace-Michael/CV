@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Profile placeholder for Peace Michael">
+  <rect width="600" height="600" rx="48" fill="#F8FAFC"/>
+  <circle cx="300" cy="240" r="120" fill="#DBEAFE"/>
+  <circle cx="300" cy="240" r="92" fill="#FFFFFF"/>
+  <path d="M180 508c28-96 92-148 120-148s92 52 120 148" fill="#2563EB"/>
+  <circle cx="300" cy="230" r="70" fill="#0F172A" opacity="0.9"/>
+  <path d="M250 210c16-38 48-58 82-58 30 0 54 10 74 30" stroke="#C59D45" stroke-width="16" stroke-linecap="round" fill="none"/>
+  <text x="300" y="560" text-anchor="middle" font-family="Segoe UI, Arial" font-size="28" fill="#475569">Peace Michael</text>
+</svg>

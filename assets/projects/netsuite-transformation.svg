@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Oracle NetSuite transformation placeholder">
+  <rect width="800" height="500" rx="28" fill="#FCFDFF"/>
+  <rect x="120" y="120" width="220" height="260" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="390" y="120" width="290" height="260" rx="20" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="150" y="160" width="160" height="30" rx="12" fill="#DBEAFE"/>
+  <rect x="150" y="220" width="120" height="24" rx="12" fill="#E2E8F0"/>
+  <rect x="150" y="270" width="150" height="24" rx="12" fill="#E2E8F0"/>
+  <rect x="420" y="160" width="180" height="24" rx="12" fill="#ECFEFF"/>
+  <rect x="420" y="220" width="120" height="24" rx="12" fill="#FEF3C7"/>
+  <rect x="420" y="280" width="140" height="24" rx="12" fill="#E2E8F0"/>
+  <text x="120" y="430" font-family="Segoe UI, Arial" font-size="24" fill="#475569">Oracle NetSuite transformation preview</text>
+</svg>

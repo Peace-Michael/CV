@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>Contact | Peace Michael</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="index.html" aria-label="Peace Michael home">
+          <span class="brand-mark">PM</span>
+          <span class="brand-text">Peace Michael</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="projects.html">Projects</a>
+          <a class="nav-link" href="experience.html">Experience</a>
+          <a class="nav-link" href="skills.html">Skills</a>
+          <a class="nav-link" href="education.html">Education</a>
+          <a class="nav-link active" href="contact.html">Contact</a>
+          <a class="button button-small button-primary" href="assets/Peace-Michael-CV.pdf" download>Download CV</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="section">
+        <div class="container contact-grid">
+          <div class="contact-copy">
+            <p class="eyebrow">Contact</p>
+            <h1>Let’s turn data into better decisions</h1>
+            <p>Open to opportunities across consulting, finance, technology, and corporate organisations.</p>
+            <ul class="contact-list">
+              <li><strong>Email:</strong> <a href="mailto:peace@example.com">peace@example.com</a></li>
+              <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">linkedin.com/in/peace-michael</a></li>
+              <li><strong>GitHub:</strong> <a href="https://github.com" target="_blank" rel="noreferrer">github.com/peace-michael</a></li>
+              <li><strong>Telephone:</strong> <a href="tel:+447000000000">+44 7000 000000</a></li>
+            </ul>
+          </div>
+          <form class="contact-form" novalidate>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required />
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+            <label for="organisation">Organisation</label>
+            <input id="organisation" name="organisation" type="text" />
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" type="text" required />
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <button class="button button-primary" type="submit">Send Message</button>
+            <p class="form-message" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-shell">
+        <p>© 2026 Peace Michael</p>
+        <a href="#main-content">Back to top</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

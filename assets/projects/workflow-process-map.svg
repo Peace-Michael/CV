@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Workflow process map placeholder">
+  <rect width="800" height="500" rx="28" fill="#FCFDFF"/>
+  <rect x="130" y="110" width="540" height="280" rx="24" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  <circle cx="240" cy="220" r="48" fill="#DBEAFE"/>
+  <circle cx="400" cy="220" r="48" fill="#ECFEFF"/>
+  <circle cx="560" cy="220" r="48" fill="#FEF3C7"/>
+  <path d="M288 220h64" stroke="#2563EB" stroke-width="8" stroke-linecap="round"/>
+  <path d="M448 220h64" stroke="#0F766E" stroke-width="8" stroke-linecap="round"/>
+  <text x="130" y="430" font-family="Segoe UI, Arial" font-size="24" fill="#475569">Workflow and process improvement preview</text>
+</svg>
