@@ -1,9 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="EdTech KPI tracker placeholder">
-  <rect width="800" height="500" rx="28" fill="#F8FAFC"/>
-  <rect x="90" y="90" width="620" height="320" rx="24" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
-  <rect x="130" y="140" width="140" height="90" rx="16" fill="#DBEAFE"/>
-  <rect x="320" y="140" width="140" height="90" rx="16" fill="#ECFEFF"/>
-  <rect x="510" y="140" width="140" height="90" rx="16" fill="#FEF3C7"/>
-  <rect x="130" y="280" width="520" height="70" rx="16" fill="#EFF6FF"/>
-  <text x="120" y="410" font-family="Segoe UI, Arial" font-size="24" fill="#475569">EdTech programme metrics preview</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="EdTech KPI tracker thumbnail">
+  <rect width="800" height="500" rx="32" fill="#F8FAFC"/>
+  <rect x="76" y="86" width="648" height="332" rx="28" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="114" y="126" width="156" height="92" rx="20" fill="#DBEAFE"/>
+  <rect x="322" y="126" width="156" height="92" rx="20" fill="#ECFEFF"/>
+  <rect x="530" y="126" width="156" height="92" rx="20" fill="#FEF3C7"/>
+  <rect x="114" y="264" width="572" height="96" rx="22" fill="#F8FBFF" stroke="#E2E8F0" stroke-width="2"/>
+  <path d="M144 310h120" stroke="#2563EB" stroke-width="10" stroke-linecap="round"/>
+  <path d="M320 310h152" stroke="#0F766E" stroke-width="10" stroke-linecap="round"/>
+  <path d="M530 310h104" stroke="#C59D45" stroke-width="10" stroke-linecap="round"/>
+  <path d="M142 154v44" stroke="#2563EB" stroke-width="8" stroke-linecap="round"/>
+  <path d="M350 154v44" stroke="#0F766E" stroke-width="8" stroke-linecap="round"/>
+  <path d="M558 154v44" stroke="#C59D45" stroke-width="8" stroke-linecap="round"/>
+  <text x="104" y="424" font-family="Segoe UI, Arial" font-size="24" fill="#475569">EdTech programme metrics</text>
 </svg>

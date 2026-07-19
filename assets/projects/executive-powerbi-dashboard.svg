@@ -1,11 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Executive Power BI dashboard placeholder">
-  <rect width="800" height="500" rx="28" fill="#F8FAFC"/>
-  <rect x="80" y="90" width="640" height="320" rx="24" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
-  <rect x="120" y="140" width="160" height="100" rx="18" fill="#DBEAFE"/>
-  <rect x="320" y="140" width="160" height="100" rx="18" fill="#ECFEFF"/>
-  <rect x="520" y="140" width="140" height="100" rx="18" fill="#FEF3C7"/>
-  <path d="M140 320h140" stroke="#2563EB" stroke-width="10" stroke-linecap="round"/>
-  <path d="M340 300h120" stroke="#0F766E" stroke-width="10" stroke-linecap="round"/>
-  <path d="M540 280h80" stroke="#C59D45" stroke-width="10" stroke-linecap="round"/>
-  <text x="120" y="410" font-family="Segoe UI, Arial" font-size="24" fill="#475569">Executive Power BI dashboard preview</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Executive Power BI thumbnail">
+  <rect width="800" height="500" rx="32" fill="#F8FAFC"/>
+  <rect x="70" y="78" width="660" height="344" rx="28" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="104" y="120" width="170" height="94" rx="20" fill="#DBEAFE"/>
+  <rect x="314" y="120" width="170" height="94" rx="20" fill="#ECFEFF"/>
+  <rect x="524" y="120" width="150" height="94" rx="20" fill="#FEF3C7"/>
+  <rect x="104" y="246" width="570" height="132" rx="22" fill="#F8FBFF" stroke="#E2E8F0" stroke-width="2"/>
+  <path d="M138 272h114" stroke="#2563EB" stroke-width="10" stroke-linecap="round"/>
+  <path d="M160 312h90" stroke="#0F766E" stroke-width="10" stroke-linecap="round"/>
+  <path d="M318 292h124" stroke="#CBD5E1" stroke-width="10" stroke-linecap="round"/>
+  <path d="M518 282h104" stroke="#C59D45" stroke-width="10" stroke-linecap="round"/>
+  <path d="M146 342c34-42 53-62 88-80 29-15 58-20 92-13 41 8 82 37 126 54" stroke="#2563EB" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <circle cx="244" cy="260" r="9" fill="#0F766E"/>
+  <circle cx="438" cy="302" r="9" fill="#C59D45"/>
+  <text x="100" y="424" font-family="Segoe UI, Arial" font-size="24" fill="#475569">Executive Power BI dashboard</text>
 </svg>

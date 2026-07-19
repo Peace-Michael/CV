@@ -1,8 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Incident trends dashboard placeholder">
-  <rect width="800" height="500" rx="28" fill="#F8FAFC"/>
-  <rect x="90" y="90" width="620" height="320" rx="24" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
-  <path d="M140 330C220 270 260 240 320 220C400 190 480 140 610 150" stroke="#2563EB" stroke-width="10" fill="none" stroke-linecap="round"/>
-  <circle cx="320" cy="220" r="10" fill="#0F766E"/>
-  <circle cx="610" cy="150" r="10" fill="#C59D45"/>
-  <text x="120" y="410" font-family="Segoe UI, Arial" font-size="24" fill="#475569">Incident trends and behavioural intelligence preview</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Incident trends thumbnail">
+  <rect width="800" height="500" rx="32" fill="#F8FAFC"/>
+  <rect x="72" y="80" width="656" height="340" rx="28" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="106" y="116" width="190" height="104" rx="20" fill="#DBEAFE"/>
+  <rect x="316" y="116" width="178" height="104" rx="20" fill="#ECFEFF"/>
+  <rect x="516" y="116" width="150" height="104" rx="20" fill="#FEF3C7"/>
+  <rect x="106" y="258" width="560" height="120" rx="22" fill="#F8FBFF" stroke="#E2E8F0" stroke-width="2"/>
+  <path d="M136 332c34-40 56-69 92-90 30-18 73-34 104-22 28 11 54 33 92 44 37 10 69 8 104-4" stroke="#2563EB" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <circle cx="228" cy="242" r="8" fill="#0F766E"/>
+  <circle cx="424" cy="300" r="8" fill="#C59D45"/>
+  <circle cx="586" cy="314" r="8" fill="#2563EB"/>
+  <path d="M132 334h514" stroke="#CBD5E1" stroke-width="8" stroke-linecap="round"/>
+  <text x="106" y="424" font-family="Segoe UI, Arial" font-size="24" fill="#475569">Incident trends and behavioural intelligence</text>
 </svg>
