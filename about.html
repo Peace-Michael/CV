@@ -1,90 +1,898 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+    <script src="https://unpkg.com/lucide@latest">
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="light dark" />
     <title>About | Peace Michael</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== Reset & Base ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border: 0 solid transparent;
+        }
+
+        :root {
+            --bg: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-hover: #f1f5f9;
+            --text: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --primary-light: #dbeafe;
+            --primary-foreground: #ffffff;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 10px 40px rgba(0, 0, 0, 0.08);
+            --radius: 0.75rem;
+            --radius-full: 9999px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 72rem;
+            --nav-height: 4.5rem;
+        }
+
+        .dark {
+            --bg: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --bg-hover: #334155;
+            --text: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #334155;
+            --border-light: #1e293b;
+            --primary: #3b82f6;
+            --primary-hover: #60a5fa;
+            --primary-light: #1e3a5f;
+            --primary-foreground: #ffffff;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background var(--transition), color var(--transition);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            padding-top: var(--nav-height);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ===== Skip Link ===== */
+        .skip-link {
+            position: fixed;
+            top: -9999px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: var(--primary-foreground);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            z-index: 9999;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        .skip-link:focus {
+            top: 1rem;
+        }
+
+        /* ===== Container ===== */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 2.5rem;
+            }
+        }
+
+        /* ===== Header / Navbar ===== */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: background var(--transition), border-color var(--transition);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+        }
+        .dark .site-header {
+            background: rgba(15, 23, 42, 0.85);
+        }
+
+        .nav-shell {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 1rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            flex-shrink: 0;
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--text);
+            transition: color var(--transition);
+        }
+        .brand-mark {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 0.5rem;
+            background: var(--primary);
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.875rem;
+            letter-spacing: -0.025em;
+            transition: transform var(--transition);
+            flex-shrink: 0;
+        }
+        .brand:hover .brand-mark {
+            transform: scale(1.05);
+        }
+        .brand-text {
+            display: none;
+        }
+        @media (min-width: 480px) {
+            .brand-text {
+                display: inline;
+            }
+        }
+
+        /* Nav toggle */
+        .nav-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.25rem;
+            width: 2rem;
+            height: 2rem;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.375rem;
+            transition: background var(--transition);
+        }
+        .nav-toggle:hover {
+            background: var(--bg-hover);
+        }
+        .nav-toggle span {
+            display: block;
+            width: 1.25rem;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: all var(--transition);
+            transform-origin: center;
+        }
+        .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 5px);
+        }
+        .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+            transform: rotate(-45deg) translate(4px, -5px);
+        }
+        @media (min-width: 768px) {
+            .nav-toggle {
+                display: none;
+            }
+        }
+
+        /* Nav links */
+        .site-nav {
+            display: none;
+            flex-direction: column;
+            gap: 0.25rem;
+            position: absolute;
+            top: var(--nav-height);
+            left: 0;
+            right: 0;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+            box-shadow: var(--shadow);
+            transition: background var(--transition), border-color var(--transition);
+        }
+        .site-nav.open {
+            display: flex;
+        }
+        @media (min-width: 768px) {
+            .site-nav {
+                display: flex !important;
+                flex-direction: row;
+                position: static;
+                background: none;
+                border-bottom: none;
+                box-shadow: none;
+                padding: 0;
+                gap: 0.125rem;
+                align-items: center;
+            }
+        }
+
+        .nav-link {
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all var(--transition);
+            display: inline-block;
+        }
+        .nav-link:hover {
+            color: var(--text);
+            background: var(--bg-hover);
+        }
+        .nav-link.active {
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+        .dark .nav-link.active {
+            color: var(--primary-hover);
+            background: rgba(59, 130, 246, 0.15);
+        }
+        @media (min-width: 768px) {
+            .nav-link {
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border-radius: var(--radius-full);
+            padding: 0.5rem 1.25rem;
+            transition: all var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: var(--font);
+            background: transparent;
+            color: var(--text);
+        }
+        .button-primary {
+            background: var(--text);
+            color: var(--bg);
+        }
+        .dark .button-primary {
+            background: var(--text);
+            color: var(--bg);
+        }
+        .button-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-hover);
+        }
+        .button-small {
+            padding: 0.375rem 1rem;
+            font-size: 0.8125rem;
+        }
+        .button .lucide {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .theme-toggle:hover {
+            background: var(--bg-hover);
+            color: var(--text);
+        }
+        .theme-toggle .lucide {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        /* ===== Sections ===== */
+        .section {
+            padding: 3rem 0 4rem;
+        }
+        @media (min-width: 768px) {
+            .section {
+                padding: 4rem 0 5rem;
+            }
+        }
+        .section-soft {
+            background: var(--bg-secondary);
+            transition: background var(--transition);
+        }
+
+        /* ===== About Page ===== */
+        .about-hero {
+            padding-top: 1.5rem;
+        }
+        .about-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+        }
+        @media (min-width: 768px) {
+            .about-hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+        .about-hero .subtitle {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        @media (min-width: 768px) {
+            .about-hero .subtitle {
+                font-size: 1.25rem;
+            }
+        }
+
+        .about-grid {
+            display: grid;
+            gap: 2.5rem;
+        }
+        @media (min-width: 768px) {
+            .about-grid {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        /* Bio prose */
+        .bio-prose p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.75;
+            margin-bottom: 1.25rem;
+        }
+        .bio-prose p:last-child {
+            margin-bottom: 0;
+        }
+        .bio-prose strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* Values grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        @media (max-width: 480px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .value-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: all var(--transition);
+        }
+        .value-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+        .value-icon {
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 0.625rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+        }
+        .value-icon .lucide {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        .value-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+        .value-card p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Sidebar */
+        .sidebar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: border-color var(--transition);
+        }
+        .sidebar-card+.sidebar-card {
+            margin-top: 1.5rem;
+        }
+        .sidebar-card h3 {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+        .sidebar-card p {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        .sidebar-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Portrait image – improved */
+        .portrait-image {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: var(--radius);
+            object-fit: cover;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            display: block;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Fallback when image fails */
+        .portrait-image[src=""],
+        .portrait-image:not([src]) {
+            display: none;
+        }
+        .portrait-fallback {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: var(--radius);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+        }
+        .portrait-fallback .lucide {
+            width: 2.5rem;
+            height: 2.5rem;
+            opacity: 0.4;
+            margin-right: 0.5rem;
+        }
+        .portrait-fallback span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .portrait-wrapper {
+            position: relative;
+            margin-bottom: 1.25rem;
+        }
+
+        .sidebar-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            background: var(--primary);
+            color: var(--primary-foreground);
+            font-weight: 600;
+            font-size: 0.9375rem;
+            transition: all var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: var(--font);
+            text-decoration: none;
+        }
+        .sidebar-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-hover);
+        }
+        .sidebar-btn .lucide {
+            width: 1.125rem;
+            height: 1.125rem;
+        }
+
+        .edu-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .edu-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .edu-item .year {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .edu-item h4 {
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0.125rem 0 0.125rem;
+        }
+        .edu-item .institution {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Divider */
+        .divider {
+            border: 0;
+            border-top: 1px solid var(--border);
+            margin: 2.5rem 0;
+        }
+
+        /* ===== Footer ===== */
+        .site-footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            margin-top: 2rem;
+            transition: border-color var(--transition);
+        }
+        .footer-shell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        @media (min-width: 640px) {
+            .footer-shell {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+        .footer-shell a {
+            color: var(--text-secondary);
+            transition: color var(--transition);
+            font-weight: 500;
+        }
+        .footer-shell a:hover {
+            color: var(--primary);
+        }
+
+        /* ===== Utility ===== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ===== Animations ===== */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-up {
+            animation: fadeUp 0.5s ease both;
+        }
+        .delay-1 {
+            animation-delay: 0.05s;
+        }
+        .delay-2 {
+            animation-delay: 0.1s;
+        }
+        .delay-3 {
+            animation-delay: 0.15s;
+        }
+        .delay-4 {
+            animation-delay: 0.2s;
+        }
+        .delay-5 {
+            animation-delay: 0.25s;
+        }
+
+        /* ===== Scrollbar ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--text-muted);
+            border-radius: 8px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
     <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <header class="site-header">
-      <div class="container nav-shell">
-        <a class="brand" href="index.html" aria-label="Peace Michael home">
-          <span class="brand-mark">PM</span>
-          <span class="brand-text">Peace Michael</span>
-        </a>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
-          <span></span><span></span><span></span>
-        </button>
-        <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
-          <a class="nav-link" href="index.html">Home</a>
-          <a class="nav-link active" href="about.html">About</a>
-          <a class="nav-link" href="projects.html">Projects</a>
-          <a class="nav-link" href="experience.html">Experience</a>
-          <a class="nav-link" href="skills.html">Skills</a>
-          <a class="nav-link" href="education.html">Education</a>
-          <a class="nav-link" href="contact.html">Contact</a>
-          <a class="button button-small button-primary" href="assets/Peace-Michael-CV.pdf" download>Download CV</a>
-        </nav>
-      </div>
+    <!-- ===== HEADER ===== -->
+    <header class="site-header" role="banner">
+        <div class="container nav-shell">
+            <a class="brand" href="index.html" aria-label="Peace Michael home">
+                <span class="brand-mark">PM</span>
+                <span class="brand-text">Peace Michael</span>
+            </a>
+
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link active" href="about.html">About</a>
+                <a class="nav-link" href="projects.html">Projects</a>
+                <a class="nav-link" href="experience.html">Experience</a>
+                <a class="nav-link" href="skills.html">Skills</a>
+                <a class="nav-link" href="education.html">Education</a>
+                <a class="nav-link" href="contact.html">Contact</a>
+                <a class="button button-small button-primary" href="assets/Peace-Michael-CV.pdf" download>Download CV</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i data-lucide="moon" id="themeIcon"></i>
+                </button>
+            </nav>
+        </div>
     </header>
 
+    <!-- ===== MAIN ===== -->
     <main id="main-content">
-      <section class="section">
-        <div class="container about-page-grid">
-          <div class="page-card photo-card">
-            <img src="assets/images/peace.jpeg" alt="Portrait placeholder for Peace Michael" />
-          </div>
-          <div class="page-card">
-            <p class="eyebrow">About</p>
-            <h1>Bringing business clarity to complex data</h1>
-            <p>
-              Peace Michael is a data analyst and BI professional with an MSc in Data Science, focused on helping organisations understand what the data is saying and how it can support better decisions.
-            </p>
-            <p>
-              The career path has blended analytical work, process improvement, reporting, ERP support, and stakeholder communication. That combination makes it possible to bridge the gap between technical detail and everyday business decisions.
-            </p>
-            <div class="pill-row">
-              <span class="pill">Curiosity</span>
-              <span class="pill">Reliability</span>
-              <span class="pill">Clarity</span>
-              <span class="pill">Continuous improvement</span>
-            </div>
-          </div>
-        </div>
-      </section>
+        <!-- Hero -->
+        <section class="section about-hero">
+            <div class="container">
+                <div class="animate-fade-up">
+                    <h1>About Me</h1>
+                    <p class="subtitle">Data Analyst &bull; Business Intelligence Analyst &bull; MSc Data Science</p>
+                </div>
 
-      <section class="section section-soft">
-        <div class="container grid-2">
-          <article class="page-card">
-            <h2>Career journey</h2>
-            <p>
-              Work has centred on moving from operational support and process coordination into analytics, reporting, and business intelligence. That transition has involved building confidence in structured analysis, KPI design, dashboard development, and business-facing communication.
-            </p>
-          </article>
-          <article class="page-card">
-            <h2>Strengths</h2>
-            <ul class="check-list">
-              <li>Clear business-focused analysis</li>
-              <li>Dashboard and reporting development</li>
-              <li>Process mapping and operational improvement</li>
-              <li>Stakeholder communication and support</li>
-            </ul>
-          </article>
-        </div>
-      </section>
+                <div class="about-grid">
+                    <!-- Left column -->
+                    <div>
+                        <div class="bio-prose animate-fade-up delay-1">
+                            <p>
+                                I am <strong>Peace Michael</strong> — a Data Analyst and Business Intelligence professional with an MSc in Data Science. I transform complex data into meaningful business insights using analytics, cloud technologies and machine learning.
+                            </p>
+                            <p>
+                                I am passionate about solving business problems with data-driven decision-making and creating scalable analytical solutions. With a strong foundation in statistics and modern machine learning, I bridge the gap between raw data and strategic business outcomes.
+                            </p>
+                            <p>
+                                I am equally comfortable designing robust data pipelines in the cloud as I am presenting executive-level insights to senior stakeholders. My approach combines rigorous analytical thinking with clear, compelling communication.
+                            </p>
+                            <p>
+                                I thrive in environments where data is at the heart of the product strategy — building systems that are scalable, maintainable, and genuinely impactful.
+                            </p>
+                        </div>
+
+                        <hr class="divider animate-fade-up delay-2" />
+
+                        <div class="animate-fade-up delay-2">
+                            <h2 style="font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:1.25rem;">What Drives Me</h2>
+                            <div class="values-grid">
+                                <!-- Value 1 -->
+                                <div class="value-card">
+                                    <div class="value-icon" style="background:var(--primary-light);color:var(--primary);">
+                                        <i data-lucide="zap"></i>
+                                    </div>
+                                    <h3>Impact-Driven Analysis</h3>
+                                    <p>Analysis for the sake of analysis is wasted effort. I focus on work that tangibly improves product metrics and business outcomes.</p>
+                                </div>
+                                <!-- Value 2 -->
+                                <div class="value-card">
+                                    <div class="value-icon" style="background:rgba(168,85,247,0.15);color:#8b5cf6;">
+                                        <i data-lucide="flask-conical"></i>
+                                    </div>
+                                    <h3>Scientific Rigor</h3>
+                                    <p>Protecting against bias and confounding variables ensures that business strategy is built on truth, not statistical illusions.</p>
+                                </div>
+                                <!-- Value 3 -->
+                                <div class="value-card">
+                                    <div class="value-icon" style="background:rgba(16,185,129,0.15);color:#10b981;">
+                                        <i data-lucide="layers"></i>
+                                    </div>
+                                    <h3>Elegant Architecture</h3>
+                                    <p>Data infrastructure should be clean, scalable, and maintainable. Technical debt in pipelines leads to organizational paralysis.</p>
+                                </div>
+                                <!-- Value 4 -->
+                                <div class="value-card">
+                                    <div class="value-icon" style="background:rgba(244,63,94,0.15);color:#f43f5e;">
+                                        <i data-lucide="eye"></i>
+                                    </div>
+                                    <h3>Crystal Clarity</h3>
+                                    <p>A complex model is useless if its findings cannot be understood by non-technical stakeholders. I build visual narratives that persuade.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right column – Sidebar -->
+                    <div class="animate-fade-up delay-3">
+                        <!-- Profile card -->
+                        <div class="sidebar-card">
+                            <div class="portrait-wrapper">
+                                <!-- Real image – remove src or set to empty string to show fallback -->
+                                <img
+                                class="portrait-image"
+                                src="assets/images/peace.jpeg"
+                                alt="Peace Michael — Data Analyst"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                />
+                                <!-- Fallback shown when image fails to load -->
+                                <div class="portrait-fallback" style="display:none;">
+                                    <span>
+                                        <i data-lucide="user"></i>
+                                        Portrait
+                                    </span>
+                                </div>
+                            </div>
+                            <h3>Location</h3>
+                            <p>London, United Kingdom</p>
+                            <h3>Open To</h3>
+                            <p>Remote / Hybrid roles</p>
+                            <a class="sidebar-btn" href="assets/Peace-Michael-CV.pdf" download>
+                                <i data-lucide="download"></i>
+                                Download Resume
+                            </a>
+                        </div>
+
+                        <!-- Education card -->
+                        <div class="sidebar-card">
+                            <h3 style="margin-bottom:0.75rem;">Education</h3>
+                            <div class="edu-item">
+                                <div class="year">2018 &ndash; 2019</div>
+                                <h4>MSc in Data Science</h4>
+                                <div class="institution">University of Technology</div>
+                            </div>
+                            <div class="edu-item">
+                                <div class="year">2014 &ndash; 2018</div>
+                                <h4>BSc in Mathematics and Statistics</h4>
+                                <div class="institution">State University</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-shell">
-        <p>© 2026 Peace Michael</p>
-        <a href="#main-content">Back to top</a>
-      </div>
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container footer-shell">
+            <p>&copy; 2026 Peace Michael. All rights reserved.</p>
+            <a href="#main-content">Back to top</a>
+        </div>
     </footer>
 
-    <script src="script.js"></script>
-  </body>
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // ---- Lucide ----
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+
+        // ---- Mobile Nav Toggle ----
+        const navToggle = document.querySelector('.nav-toggle');
+        const siteNav = document.getElementById('site-nav');
+
+        navToggle.addEventListener('click', function() {
+            const expanded = this.getAttribute('aria-expanded') === 'true' ? false : true;
+            this.setAttribute('aria-expanded', expanded);
+            siteNav.classList.toggle('open');
+        });
+
+        // Close nav on link click (mobile)
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.setAttribute('aria-expanded', 'false');
+                siteNav.classList.remove('open');
+            });
+        });
+
+        // ---- Dark Mode ----
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+
+        function getPreferredTheme() {
+            const stored = localStorage.getItem('theme');
+            if (stored === 'dark' || stored === 'light') return stored;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function setTheme(theme) {
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+            localStorage.setItem('theme', theme);
+            if (themeIcon) {
+                themeIcon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            }
+        }
+
+        const currentTheme = getPreferredTheme();
+        setTheme(currentTheme);
+
+        themeToggle.addEventListener('click', function() {
+            const next = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+            setTheme(next);
+        });
+    </script>
+</body>
 </html>

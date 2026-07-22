@@ -815,3 +815,5 @@ textarea:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+.project-icon{display:flex;align-items:center;justify-content:center;height:180px;background:#f5f7fb}.project-icon svg{width:72px;height:72px;color:#2563eb}
