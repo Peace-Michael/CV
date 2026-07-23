@@ -178,7 +178,6 @@
             }
         }
 
-        /* Nav toggle */
         .nav-toggle {
             display: flex;
             flex-direction: column;
@@ -222,7 +221,6 @@
             }
         }
 
-        /* Nav links */
         .site-nav {
             display: none;
             flex-direction: column;
@@ -235,6 +233,7 @@
             border-bottom: 1px solid var(--border);
             padding: 1rem 1.5rem;
             box-shadow: var(--shadow);
+            z-index: 200;
             transition: background var(--transition), border-color var(--transition);
         }
         .site-nav.open {
@@ -317,7 +316,6 @@
             height: 1rem;
         }
 
-        /* Dark mode toggle in nav */
         .theme-toggle {
             background: none;
             border: none;
@@ -677,31 +675,55 @@
             <div class="container">
                 <div class="section-heading">
                     <p class="eyebrow">Projects</p>
-                    <h1>Featured data and business intelligence work</h1>
+                    <h1>Data science, cloud, and blockchain portfolio</h1>
                 </div>
 
                 <!-- Filters -->
                 <div class="filter-group" role="tablist" aria-label="Project filters">
                     <button class="filter-pill active" data-filter="all" role="tab" aria-selected="true">All Projects</button>
                     <button class="filter-pill" data-filter="data-analytics" role="tab" aria-selected="false">Data Analytics</button>
-                    <button class="filter-pill" data-filter="business-intelligence" role="tab" aria-selected="false">Business Intelligence</button>
                     <button class="filter-pill" data-filter="cloud-data" role="tab" aria-selected="false">Cloud &amp; Data Engineering</button>
-                    <button class="filter-pill" data-filter="process-improvement" role="tab" aria-selected="false">Business Process Improvement</button>
+                    <button class="filter-pill" data-filter="blockchain" role="tab" aria-selected="false">Blockchain &amp; Security</button>
+                    <button class="filter-pill" data-filter="data-viz" role="tab" aria-selected="false">Data Visualization</button>
+                    <button class="filter-pill" data-filter="statistics" role="tab" aria-selected="false">Statistical Programming</button>
                 </div>
 
                 <!-- Project Grid -->
                 <div class="project-grid" id="projectGrid">
 
-                    <!-- Card 1 -->
+                    <!-- Card 1: AIML Diabetes Analysis -->
+                    <article class="project-card" data-category="data-analytics">
+                        <div class="project-icon"><i data-lucide="activity"></i></div>
+                        <div class="project-content">
+                            <p class="project-category">Data Analytics</p>
+                            <h3>AIML Diabetes Risk Prediction &amp; Clustering</h3>
+                            <p>Applied Logistic Regression (72% accuracy) and K-Means clustering on the Pima Indians Diabetes dataset to predict diabetes risk and uncover 4 clinically meaningful patient subgroups.</p>
+                            <div class="project-tags">
+                                <span>Python</span>
+                                <span>Scikit-learn</span>
+                                <span>Pandas</span>
+                                <span>K-Means</span>
+                                <span>Logistic Regression</span>
+                            </div>
+                        </div>
+                        <a href="case-study-aiml.html" class="project-link">
+                            View Case Study
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                    </article>
+
+                    <!-- Card 2: Big Data & Cloud Computing -->
                     <article class="project-card" data-category="cloud-data">
                         <div class="project-icon"><i data-lucide="cloud"></i></div>
                         <div class="project-content">
                             <p class="project-category">Cloud &amp; Data Engineering</p>
-                            <h3>Azure Cloud BI and Medallion Data Pipeline</h3>
-                            <p>Built a scalable data foundation to support reporting and analytics across structured business data.</p>
+                            <h3>Big Data &amp; Cloud Computing – Azure Medallion Pipeline</h3>
+                            <p>Designed an end-to-end analytics pipeline on Microsoft Azure processing 5.2M+ CMS nursing staff records using Medallion Architecture (Bronze, Silver, Gold) with dynamic data ingestion via Azure Data Factory and Databricks.</p>
                             <div class="project-tags">
                                 <span>Azure</span>
-                                <span>SQL</span>
+                                <span>Data Factory</span>
+                                <span>Databricks</span>
+                                <span>Medallion Architecture</span>
                                 <span>Power BI</span>
                             </div>
                         </div>
@@ -711,96 +733,85 @@
                         </a>
                     </article>
 
-                    <!-- Card 2 -->
-                    <article class="project-card" data-category="process-improvement">
-                        <div class="project-icon"><i data-lucide="boxes"></i></div>
+                    <!-- Card 3: Blockchain Healthcare -->
+                    <article class="project-card" data-category="blockchain">
+                        <div class="project-icon"><i data-lucide="shield"></i></div>
                         <div class="project-content">
-                            <p class="project-category">Business Process Improvement</p>
-                            <h3>Oracle NetSuite ERP Transformation</h3>
-                            <p>Supported data migration and process readiness during an ERP transformation focused on operational continuity.</p>
-                            <div class="project-tags">
-                                <span>NetSuite</span>
-                                <span>ERP</span>
-                                <span>Data Migration</span>
-                            </div>
-                        </div>
-                        <a href="#" class="project-link">
-                            View Case Study
-                            <i data-lucide="arrow-right"></i>
-                        </a>
-                    </article>
-
-                    <!-- Card 3 -->
-                    <article class="project-card" data-category="business-intelligence">
-                        <div class="project-icon"><i data-lucide="chart-column"></i></div>
-                        <div class="project-content">
-                            <p class="project-category">Business Intelligence</p>
-                            <h3>Executive Power BI Suite</h3>
-                            <p>Developed more than 40 Power BI metrics to help managers monitor sales, finance, HR and inventory performance.</p>
-                            <div class="project-tags">
-                                <span>Power BI</span>
-                                <span>DAX</span>
-                                <span>SQL</span>
-                            </div>
-                        </div>
-                        <a href="#" class="project-link">
-                            View Case Study
-                            <i data-lucide="arrow-right"></i>
-                        </a>
-                    </article>
-
-                    <!-- Card 4 -->
-                    <article class="project-card" data-category="process-improvement">
-                        <div class="project-icon"><i data-lucide="workflow"></i></div>
-                        <div class="project-content">
-                            <p class="project-category">Business Process Improvement</p>
-                            <h3>Operations Process and Workflow Engineering</h3>
-                            <p>Mapped operational workflows and improved handovers across functions, reducing friction and cycle times.</p>
-                            <div class="project-tags">
-                                <span>Process Mapping</span>
-                                <span>Lean</span>
-                                <span>Automation</span>
-                            </div>
-                        </div>
-                        <a href="#" class="project-link">
-                            View Case Study
-                            <i data-lucide="arrow-right"></i>
-                        </a>
-                    </article>
-
-                    <!-- Card 5 -->
-                    <article class="project-card" data-category="data-analytics">
-                        <div class="project-icon"><i data-lucide="activity"></i></div>
-                        <div class="project-content">
-                            <p class="project-category">Data Analytics</p>
-                            <h3>Incident Trends and Behavioural Intelligence</h3>
-                            <p>Analysed incident patterns and operational data to reveal recurring issues and support proactive monitoring.</p>
+                            <p class="project-category">Blockchain &amp; Security</p>
+                            <h3>Healthcare Blockchain System – Python &amp; Solidity</h3>
+                            <p>Built a Python blockchain and Solidity smart contract for patient record management with role-based access control, tamper-proof audit trails, and deployment to Sepolia testnet.</p>
                             <div class="project-tags">
                                 <span>Python</span>
-                                <span>Pandas</span>
-                                <span>Tableau</span>
+                                <span>Solidity</span>
+                                <span>Ethereum</span>
+                                <span>Sepolia</span>
+                                <span>Smart Contracts</span>
                             </div>
                         </div>
-                        <a href="#" class="project-link">
+                        <a href="case-study-blockchain.html" class="project-link">
                             View Case Study
                             <i data-lucide="arrow-right"></i>
                         </a>
                     </article>
 
-                    <!-- Card 6 -->
-                    <article class="project-card" data-category="business-intelligence">
-                        <div class="project-icon"><i data-lucide="graduation-cap"></i></div>
+                    <!-- Card 4: Database Systems and Security -->
+                    <article class="project-card" data-category="data-analytics">
+                        <div class="project-icon"><i data-lucide="database"></i></div>
                         <div class="project-content">
-                            <p class="project-category">Business Intelligence</p>
-                            <h3>EdTech Programme and Partner Metrics</h3>
-                            <p>Tracked participant engagement and partner performance through structured reporting and dashboard views.</p>
+                            <p class="project-category">Data Analytics</p>
+                            <h3>Database Systems and Security</h3>
+                            <p>Designed and implemented a secure relational database system with role-based access controls, encryption, and comprehensive security auditing for healthcare data management.</p>
                             <div class="project-tags">
-                                <span>Looker</span>
                                 <span>SQL</span>
-                                <span>Data Studio</span>
+                                <span>PostgreSQL</span>
+                                <span>Security</span>
+                                <span>Access Control</span>
+                                <span>Auditing</span>
                             </div>
                         </div>
-                        <a href="#" class="project-link">
+                        <a href="case-study-database.html" class="project-link">
+                            View Case Study
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                    </article>
+
+                    <!-- Card 5: Data Visualization -->
+                    <article class="project-card" data-category="data-viz">
+                        <div class="project-icon"><i data-lucide="chart-column"></i></div>
+                        <div class="project-content">
+                            <p class="project-category">Data Visualization</p>
+                            <h3>Data Visualization – Interactive Dashboards</h3>
+                            <p>Created interactive dashboards and visualizations using Power BI, Tableau, and D3.js to communicate complex business insights through compelling data stories.</p>
+                            <div class="project-tags">
+                                <span>Power BI</span>
+                                <span>Tableau</span>
+                                <span>D3.js</span>
+                                <span>DAX</span>
+                                <span>Data Storytelling</span>
+                            </div>
+                        </div>
+                        <a href="case-study-dataviz.html" class="project-link">
+                            View Case Study
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                    </article>
+
+                    <!-- Card 6: Statistical Programming -->
+                    <article class="project-card" data-category="statistics">
+                        <div class="project-icon"><i data-lucide="bar-chart"></i></div>
+                        <div class="project-content">
+                            <p class="project-category">Statistical Programming</p>
+                            <h3>Statistical Programming with R</h3>
+                            <p>Applied advanced statistical methods including hypothesis testing, regression modeling, ANOVA, and time series analysis using R and RStudio on real-world datasets.</p>
+                            <div class="project-tags">
+                                <span>R</span>
+                                <span>Tidyverse</span>
+                                <span>Hypothesis Testing</span>
+                                <span>Regression</span>
+                                <span>Time Series</span>
+                            </div>
+                        </div>
+                        <a href="case-study-statistics.html" class="project-link">
                             View Case Study
                             <i data-lucide="arrow-right"></i>
                         </a>
@@ -838,7 +849,6 @@
             siteNav.classList.toggle('open');
         });
 
-        // Close nav on link click (mobile)
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 navToggle.setAttribute('aria-expanded', 'false');
@@ -887,7 +897,6 @@
                 if (match) visibleCount++;
             });
 
-            // Remove old no-results
             const oldMsg = grid.querySelector('.no-results');
             if (oldMsg) oldMsg.remove();
 
@@ -899,7 +908,6 @@
                 grid.appendChild(msg);
             }
 
-            // Update ARIA
             filterPills.forEach(pill => {
                 const isActive = pill.dataset.filter === category;
                 pill.classList.toggle('active', isActive);
@@ -914,7 +922,6 @@
             });
         });
 
-        // ---- Keyboard support for filter pills ----
         filterPills.forEach((pill, index) => {
             pill.addEventListener('keydown', function(e) {
                 const pills = Array.from(filterPills);
@@ -934,7 +941,6 @@
             });
         });
 
-        // ---- Init: show all ----
         filterProjects('all');
     </script>
 </body>
