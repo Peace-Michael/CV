@@ -817,3 +817,178 @@ textarea:focus-visible {
 }
 
 .project-icon{display:flex;align-items:center;justify-content:center;height:180px;background:#f5f7fb}.project-icon svg{width:72px;height:72px;color:#2563eb}
+
+/* styles.css - Add these dark mode rules at the end */
+
+/* Dark mode support */
+:root {
+  color-scheme: light dark;
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f8fbff;
+  --text: #0f172a;
+  --muted: #475569;
+  --accent: #2563eb;
+  --accent-soft: #dbeafe;
+  --teal: #0f766e;
+  --gold: #c59d45;
+  --border: #e2e8f0;
+  --shadow: 0 20px 45px rgba(15, 23, 42, 0.06);
+  --radius: 24px;
+  --modal-bg: rgba(15, 23, 42, 0.28);
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-2: #1a2332;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --accent: #3b82f6;
+  --accent-soft: #1e3a5f;
+  --teal: #2dd4bf;
+  --gold: #fbbf24;
+  --border: #334155;
+  --shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+  --modal-bg: rgba(0, 0, 0, 0.5);
+}
+
+.dark .section-soft {
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.95));
+}
+
+.dark .site-header {
+  background: rgba(15, 23, 42, 0.9);
+  border-bottom-color: var(--border);
+}
+
+.dark .profile-card img,
+.dark .project-card img,
+.dark .gallery-card img {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+}
+
+.dark .metric-card.accent-blue { background: #1e3a5f; }
+.dark .metric-card.accent-teal { background: #0d3d3a; }
+.dark .metric-card.accent-gold { background: #3d3500; }
+.dark .metric-card.accent-sky { background: #1a2a4a; }
+
+.dark .contact-form input,
+.dark .contact-form textarea {
+  background: #0f172a;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.dark .modal-dialog {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.dark .filter-pill {
+  background: var(--surface);
+  color: var(--muted);
+}
+
+.dark .filter-pill.active {
+  background: var(--accent);
+  color: white;
+}
+
+.dark .project-tags span {
+  background: var(--surface-2);
+  color: var(--muted);
+}
+
+.dark .dashboard-card {
+  background: var(--surface);
+}
+
+.dark .chart-card {
+  background: var(--surface-2);
+}
+
+.dark .modal-close {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.dark .status-dot {
+  background: #0d3d3a;
+  color: var(--teal);
+}
+
+.dark .nav-toggle span {
+  background: var(--text);
+}
+
+.dark .site-nav {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.dark .social-links a {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--accent);
+}
+
+.dark .social-links a:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.dark .button-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.dark .button-secondary:hover {
+  background: var(--surface-2);
+}
+
+.dark .page-card,
+.dark .about-panel,
+.dark .skill-card,
+.dark .edu-card,
+.dark .gallery-card,
+.dark .contact-form,
+.dark .impact-card,
+.dark .timeline-content {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.dark .profile-card-body h2,
+.dark .section-heading h2,
+.dark .section-heading h1,
+.dark .hero-content h1 {
+  color: var(--text);
+}
+
+.dark .hero-content p,
+.dark .about-copy p,
+.dark .contact-copy p,
+.dark .project-content p,
+.dark .edu-card p,
+.dark .gallery-card p,
+.dark .timeline-content li,
+.dark .skill-card li {
+  color: var(--muted);
+}
+
+.dark .pill,
+.dark .eyebrow {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.dark .project-icon {
+  background: var(--surface-2);
+}
+
+.dark .project-icon svg {
+  color: var(--accent);
+}

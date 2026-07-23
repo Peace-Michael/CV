@@ -1,485 +1,1884 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light" />
-    <meta name="description" content="Peace Michael is a data analyst, BI analyst, and MSc Data Science graduate focused on turning complex data into clear business decisions." />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Peace Michael — Data Analyst, BI Analyst, and MSc Data Science graduate focused on turning complex data into clear business decisions." />
     <title>Peace Michael | Data Analytics & Business Intelligence</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest">
+    </script>
+    <style>
+        /* ===== Reset & Base ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border: 0 solid transparent;
+        }
+
+        :root {
+            --bg: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-hover: #f1f5f9;
+            --text: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --primary-light: #dbeafe;
+            --primary-foreground: #ffffff;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 10px 40px rgba(0, 0, 0, 0.08);
+            --radius: 0.75rem;
+            --radius-full: 9999px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --max-width: 72rem;
+            --nav-height: 4.5rem;
+        }
+
+        .dark {
+            --bg: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --bg-hover: #334155;
+            --text: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #334155;
+            --border-light: #1e293b;
+            --primary: #3b82f6;
+            --primary-hover: #60a5fa;
+            --primary-light: #1e3a5f;
+            --primary-foreground: #ffffff;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background var(--transition), color var(--transition);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            padding-top: var(--nav-height);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ===== Skip Link ===== */
+        .skip-link {
+            position: fixed;
+            top: -9999px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: var(--primary-foreground);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            z-index: 9999;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        .skip-link:focus {
+            top: 1rem;
+        }
+
+        /* ===== Container ===== */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+            width: 100%;
+        }
+        @media (min-width: 480px) {
+            .container {
+                padding: 0 1.25rem;
+            }
+        }
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 2.5rem;
+            }
+        }
+
+        /* ===== Header / Navbar ===== */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: background var(--transition), border-color var(--transition);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+        }
+        .dark .site-header {
+            background: rgba(15, 23, 42, 0.85);
+        }
+
+        .nav-shell {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 0.5rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-shrink: 0;
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--text);
+            transition: color var(--transition);
+        }
+        .brand-mark {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 0.5rem;
+            background: var(--primary);
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.875rem;
+            letter-spacing: -0.025em;
+            transition: transform var(--transition);
+            flex-shrink: 0;
+        }
+        .brand:hover .brand-mark {
+            transform: scale(1.05);
+        }
+        .brand-text {
+            display: none;
+        }
+        @media (min-width: 480px) {
+            .brand-text {
+                display: inline;
+            }
+        }
+
+        .nav-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            width: 2.75rem;
+            height: 2.75rem;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.5rem;
+            transition: background var(--transition);
+            position: relative;
+            z-index: 101;
+            flex-shrink: 0;
+        }
+        .nav-toggle:hover,
+        .nav-toggle:active {
+            background: var(--bg-hover);
+        }
+        .nav-toggle span {
+            display: block;
+            width: 1.5rem;
+            height: 2.5px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: all var(--transition);
+            transform-origin: center;
+        }
+        .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        @media (min-width: 768px) {
+            .nav-toggle {
+                display: none;
+            }
+        }
+
+        .site-nav {
+            display: none;
+            flex-direction: column;
+            gap: 0.25rem;
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 1.25rem;
+            box-shadow: var(--shadow-hover);
+            transition: background var(--transition), border-color var(--transition);
+            overflow-y: auto;
+            z-index: 99;
+        }
+        .site-nav.open {
+            display: flex;
+        }
+        @media (min-width: 768px) {
+            .site-nav {
+                display: flex !important;
+                flex-direction: row;
+                position: static;
+                background: none;
+                border-bottom: none;
+                box-shadow: none;
+                padding: 0;
+                gap: 0.125rem;
+                align-items: center;
+                overflow-y: visible;
+                bottom: auto;
+            }
+        }
+
+        .nav-link {
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-full);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all var(--transition);
+            display: inline-block;
+            width: 100%;
+            text-align: left;
+        }
+        .nav-link:hover {
+            color: var(--text);
+            background: var(--bg-hover);
+        }
+        .nav-link.active {
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+        .dark .nav-link.active {
+            color: var(--primary-hover);
+            background: rgba(59, 130, 246, 0.15);
+        }
+        @media (min-width: 768px) {
+            .nav-link {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+                width: auto;
+                text-align: center;
+            }
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border-radius: var(--radius-full);
+            padding: 0.5rem 1.25rem;
+            transition: all var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: var(--font);
+            background: transparent;
+            color: var(--text);
+            width: 100%;
+        }
+        .button-primary {
+            background: var(--text);
+            color: var(--bg);
+        }
+        .dark .button-primary {
+            background: var(--text);
+            color: var(--bg);
+        }
+        .button-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-hover);
+        }
+        .button-secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        .button-secondary:hover {
+            background: var(--bg-hover);
+            border-color: var(--text);
+        }
+        .button-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.8125rem;
+        }
+        .button .lucide {
+            width: 1rem;
+            height: 1rem;
+        }
+        @media (min-width: 768px) {
+            .button {
+                width: auto;
+            }
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            width: 100%;
+            text-align: left;
+        }
+        .theme-toggle:hover {
+            background: var(--bg-hover);
+            color: var(--text);
+        }
+        .theme-toggle .lucide {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        @media (min-width: 768px) {
+            .theme-toggle {
+                padding: 0.5rem;
+                width: auto;
+                text-align: center;
+            }
+            .theme-toggle span {
+                display: none;
+            }
+        }
+
+        /* ===== Sections ===== */
+        .section {
+            padding: 2rem 0 3rem;
+        }
+        @media (min-width: 768px) {
+            .section {
+                padding: 3rem 0 4rem;
+            }
+        }
+        .section-soft {
+            background: var(--bg-secondary);
+            transition: background var(--transition);
+        }
+
+        .section-heading {
+            margin-bottom: 1.5rem;
+        }
+        .section-heading .eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+        .section-heading h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            color: var(--text);
+        }
+        @media (min-width: 768px) {
+            .section-heading .eyebrow {
+                font-size: 0.8125rem;
+            }
+            .section-heading h2 {
+                font-size: 2rem;
+            }
+        }
+
+        .eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+        @media (min-width: 768px) {
+            .eyebrow {
+                font-size: 0.8125rem;
+            }
+        }
+
+        .text-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--primary);
+            transition: all var(--transition);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font);
+        }
+        .text-button:hover {
+            gap: 0.625rem;
+            color: var(--primary-hover);
+        }
+        .text-button .lucide {
+            width: 1rem;
+            height: 1rem;
+            transition: transform var(--transition);
+        }
+        .text-button:hover .lucide {
+            transform: translateX(2px);
+        }
+
+        /* ===== Hero ===== */
+        .hero-grid {
+            display: grid;
+            gap: 2rem;
+            align-items: center;
+        }
+        @media (min-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        .hero-content {
+            animation: fadeUp 0.6s ease both;
+        }
+        .hero-content .pill {
+            display: inline-block;
+            padding: 0.25rem 0.875rem;
+            border-radius: var(--radius-full);
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .dark .hero-content .pill {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--primary-hover);
+        }
+        .hero-content h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+        }
+        @media (min-width: 640px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+        @media (min-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+        }
+        .hero-content p {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+        @media (min-width: 768px) {
+            .hero-content p {
+                font-size: 1.0625rem;
+            }
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: var(--radius-full);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all var(--transition);
+        }
+        .social-links a:hover {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            animation: fadeUp 0.6s ease both;
+            animation-delay: 0.1s;
+        }
+
+        .profile-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+        }
+        .profile-card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+        .profile-card .profile-img-placeholder {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: var(--radius);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        .profile-card .profile-img-placeholder .lucide {
+            width: 3rem;
+            height: 3rem;
+            opacity: 0.3;
+        }
+        .profile-card .profile-img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .profile-card .eyebrow {
+            font-size: 0.7rem;
+        }
+        .profile-card h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0.25rem 0 0.5rem;
+        }
+        .profile-card p {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ===== Impact Grid ===== */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        @media (min-width: 640px) {
+            .impact-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.25rem;
+            }
+        }
+        .impact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem;
+            text-align: center;
+            transition: all var(--transition);
+            animation: fadeUp 0.6s ease both;
+        }
+        .impact-card:nth-child(1) { animation-delay: 0.05s; }
+        .impact-card:nth-child(2) { animation-delay: 0.1s; }
+        .impact-card:nth-child(3) { animation-delay: 0.15s; }
+        .impact-card:nth-child(4) { animation-delay: 0.2s; }
+        .impact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+        .impact-card strong {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+        .impact-card h3 {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text);
+            margin: 0.25rem 0 0.5rem;
+        }
+        .impact-card p {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ===== Project Cards ===== */
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        @media (min-width: 640px) {
+            .project-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all var(--transition);
+            box-shadow: var(--shadow);
+            animation: fadeUp 0.6s ease both;
+        }
+        .project-card:nth-child(1) { animation-delay: 0.05s; }
+        .project-card:nth-child(2) { animation-delay: 0.1s; }
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+
+        .project-card .project-icon {
+            height: 100px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+        }
+        .project-card .project-icon .lucide {
+            width: 2.5rem;
+            height: 2.5rem;
+            opacity: 0.4;
+        }
+
+        .project-content {
+            padding: 1rem 1rem 1.25rem;
+        }
+        .project-content .project-category {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--primary);
+        }
+        .project-content h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0.25rem 0 0.5rem;
+        }
+        .project-content p {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+            margin-bottom: 0.5rem;
+        }
+        .project-tags span {
+            font-size: 0.65rem;
+            font-weight: 500;
+            padding: 0.125rem 0.625rem;
+            border-radius: var(--radius-full);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        .project-result {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        .project-result strong {
+            color: var(--text);
+        }
+
+        .section-footer {
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== Experience ===== */
+        .timeline {
+            position: relative;
+            padding-left: 1.25rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.25rem;
+            top: 0.5rem;
+            bottom: 0.5rem;
+            width: 2px;
+            background: var(--border);
+            border-radius: 2px;
+        }
+        @media (min-width: 640px) {
+            .timeline {
+                padding-left: 2rem;
+            }
+            .timeline::before {
+                left: 0.5rem;
+            }
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+            animation: fadeUp 0.6s ease both;
+        }
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        .timeline-item:nth-child(1) { animation-delay: 0.05s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.1s; }
+
+        .timeline-marker {
+            position: absolute;
+            left: -1.25rem;
+            top: 0.25rem;
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 2px solid var(--bg);
+            box-shadow: 0 0 0 3px var(--primary-light);
+            transition: all var(--transition);
+            z-index: 1;
+            flex-shrink: 0;
+        }
+        .dark .timeline-marker {
+            border-color: var(--bg);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+        }
+        @media (min-width: 640px) {
+            .timeline-marker {
+                left: -2rem;
+                width: 0.875rem;
+                height: 0.875rem;
+            }
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem;
+            transition: all var(--transition);
+            box-shadow: var(--shadow);
+        }
+        .timeline-content:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+
+        .timeline-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            margin-bottom: 0.5rem;
+        }
+        @media (min-width: 480px) {
+            .timeline-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: baseline;
+                flex-wrap: wrap;
+            }
+        }
+        .timeline-header h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+        .timeline-org {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-top: 0.125rem;
+        }
+        .timeline-header .date {
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+            flex-shrink: 0;
+            padding-top: 0.125rem;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+        .timeline-content ul li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .timeline-content ul li::before {
+            content: '';
+            display: inline-block;
+            flex-shrink: 0;
+            width: 0.3125rem;
+            height: 0.3125rem;
+            border-radius: 50%;
+            background: var(--primary);
+            margin-top: 0.55rem;
+            opacity: 0.7;
+        }
+        .tag-list {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+        .tag-list strong {
+            color: var(--text-secondary);
+        }
+
+        /* ===== Skills ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        @media (min-width: 640px) {
+            .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (min-width: 1024px) {
+            .skills-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem;
+            transition: all var(--transition);
+            animation: fadeUp 0.6s ease both;
+        }
+        .skill-card:nth-child(1) { animation-delay: 0.05s; }
+        .skill-card:nth-child(2) { animation-delay: 0.1s; }
+        .skill-card:nth-child(3) { animation-delay: 0.15s; }
+        .skill-card:nth-child(4) { animation-delay: 0.2s; }
+        .skill-card:nth-child(5) { animation-delay: 0.25s; }
+        .skill-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+        .skill-card h3 {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        .skill-card ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+        .skill-card ul li {
+            font-size: 0.7rem;
+            padding: 0.125rem 0.625rem;
+            border-radius: var(--radius-full);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        /* ===== Education ===== */
+        .education-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        @media (min-width: 640px) {
+            .education-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .edu-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem;
+            transition: all var(--transition);
+            animation: fadeUp 0.6s ease both;
+        }
+        .edu-card:nth-child(1) { animation-delay: 0.05s; }
+        .edu-card:nth-child(2) { animation-delay: 0.1s; }
+        .edu-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+        .edu-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .edu-card .edu-school {
+            font-weight: 500;
+            color: var(--primary);
+            margin: 0.125rem 0 0.375rem;
+            font-size: 0.875rem;
+        }
+        .edu-card p {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .edu-card .meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.375rem;
+        }
+        .edu-card .meta strong {
+            color: var(--text-secondary);
+        }
+
+        /* ===== Contact ===== */
+        .contact-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+        }
+        .contact-copy {
+            animation: fadeUp 0.6s ease both;
+        }
+        .contact-copy h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        @media (min-width: 768px) {
+            .contact-copy h2 {
+                font-size: 2rem;
+            }
+        }
+        .contact-copy p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            margin-bottom: 1rem;
+        }
+        .contact-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        .contact-list li strong {
+            font-weight: 600;
+            color: var(--text);
+            min-width: 4.5rem;
+        }
+        .contact-list li a {
+            color: var(--primary);
+            font-weight: 500;
+            transition: color var(--transition);
+        }
+        .contact-list li a:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            box-shadow: var(--shadow);
+            animation: fadeUp 0.6s ease both;
+            animation-delay: 0.1s;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .contact-form label {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: -0.25rem;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+            font-family: var(--font);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text);
+            transition: all var(--transition);
+            outline: none;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+        .dark .contact-form input:focus,
+        .dark .contact-form textarea:focus {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .contact-form .button {
+            margin-top: 0.25rem;
+            width: 100%;
+        }
+        @media (min-width: 480px) {
+            .contact-form .button {
+                width: auto;
+                align-self: flex-start;
+            }
+        }
+        .form-message {
+            font-size: 0.8125rem;
+            min-height: 1.25rem;
+        }
+        .form-message.success {
+            color: #16a34a;
+        }
+        .form-message.error {
+            color: #dc2626;
+        }
+
+        /* ===== Footer ===== */
+        .site-footer {
+            border-top: 1px solid var(--border);
+            padding: 1rem 0;
+            margin-top: 1rem;
+            transition: border-color var(--transition);
+        }
+        .footer-shell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+        @media (min-width: 640px) {
+            .footer-shell {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+        .footer-shell a {
+            color: var(--text-secondary);
+            transition: color var(--transition);
+            font-weight: 500;
+        }
+        .footer-shell a:hover {
+            color: var(--primary);
+        }
+
+        /* ===== Animations ===== */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== Modal ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-overlay.active .modal-dialog {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .modal-dialog {
+            background: var(--bg);
+            border-radius: var(--radius);
+            max-width: 32rem;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-hover);
+            transform: scale(0.95);
+            opacity: 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .dark .modal-dialog {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+        }
+        .modal-close {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: color var(--transition);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+        }
+        .modal-close:hover {
+            color: var(--text);
+            background: var(--bg-hover);
+        }
+        .modal-body {
+            margin-top: 0.25rem;
+        }
+        .modal-body .project-category {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--primary);
+        }
+        .modal-body h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0.25rem 0 0.5rem;
+        }
+        .modal-body p {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+        }
+        .modal-body .modal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+            margin-bottom: 0.75rem;
+        }
+        .modal-body .modal-tags span {
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.125rem 0.625rem;
+            border-radius: var(--radius-full);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        .modal-body .modal-detail {
+            background: var(--bg-secondary);
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius);
+            border-left: 3px solid var(--primary);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* ===== Utility ===== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ===== Scrollbar ===== */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--text-muted);
+            border-radius: 8px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
     <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <header class="site-header">
-      <div class="container nav-shell">
-        <a class="brand" href="index.html" aria-label="Peace Michael home">
-          <span class="brand-mark">PM</span>
-          <span class="brand-text">Peace Michael</span>
-        </a>
+    <!-- ===== HEADER ===== -->
+    <header class="site-header" role="banner">
+        <div class="container nav-shell">
+            <a class="brand" href="index.html" aria-label="Peace Michael home">
+                <span class="brand-mark">PM</span>
+                <span class="brand-text">Peace Michael</span>
+            </a>
 
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
 
-        <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
-          <a class="nav-link active" href="index.html">Home</a>
-          <a class="nav-link" href="about.html">About</a>
-          <a class="nav-link" href="projects.html">Projects</a>
-          <a class="nav-link" href="experience.html">Experience</a>
-          <a class="nav-link" href="skills.html">Skills</a>
-          <a class="nav-link" href="education.html">Education</a>
-          <a class="nav-link" href="contact.html">Contact</a>
-          <a class="button button-small button-primary" href="assets/Peace-Michael-CV.pdf" download>Download CV</a>
-        </nav>
-      </div>
+            <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+                <a class="nav-link active" href="index.html">Home</a>
+                <a class="nav-link" href="about.html">About</a>
+                <a class="nav-link" href="projects.html">Projects</a>
+                <a class="nav-link" href="experience.html">Experience</a>
+                <a class="nav-link" href="skills.html">Skills</a>
+                <a class="nav-link" href="education.html">Education</a>
+                <a class="nav-link" href="contact.html">Contact</a>
+                <a class="button button-small button-primary" href="assets/Peace-Michael-CV.pdf" download>Download CV</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i data-lucide="moon" id="themeIcon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </nav>
+        </div>
     </header>
 
+    <!-- ===== MAIN ===== -->
     <main id="main-content">
-      <section class="hero section" id="home">
-        <div class="container hero-grid">
-          <div class="hero-content">
-            <div class="pill">Available for Data, BI &amp; Analytics Opportunities</div>
-            <h1>Turning Complex Data Into Clear Business Decisions</h1>
-            <p>
-              Peace Michael is an MSc Data Science graduate with experience in data analysis,
-              business intelligence, process improvement, ERP implementation, cloud data pipelines,
-              reporting, and operational transformation.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="projects.html">View My Projects</a>
-              <a class="button button-secondary" href="assets/Peace-Michael-CV.pdf" download>Download CV</a>
+
+        <!-- ===== HERO ===== -->
+        <section class="section">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <span class="pill">Available for Data, BI &amp; Analytics Opportunities</span>
+                    <h1>Turning Complex Data Into Clear Business Decisions</h1>
+                    <p>
+                        Peace Michael is an MSc Data Science graduate with experience in data analysis,
+                        business intelligence, process improvement, ERP implementation, cloud data pipelines,
+                        reporting, and operational transformation.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="projects.html">View My Projects</a>
+                        <a class="button button-secondary" href="assets/Peace-Michael-CV.pdf" download>Download CV</a>
+                    </div>
+                    <div class="social-links" aria-label="Social links">
+                        <a href="https://www.linkedin.com/in/peace-michael" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                            <i data-lucide="linkedin" style="width:1.125rem;height:1.125rem;"></i>
+                        </a>
+                        <a href="https://github.com/peace-michael" target="_blank" rel="noreferrer" aria-label="GitHub">
+                            <i data-lucide="github" style="width:1.125rem;height:1.125rem;"></i>
+                        </a>
+                        <a href="mailto:peace@example.com" aria-label="Email">
+                            <i data-lucide="mail" style="width:1.125rem;height:1.125rem;"></i>
+                        </a>
+                        <a href="tel:+447000000000" aria-label="Telephone">
+                            <i data-lucide="phone" style="width:1.125rem;height:1.125rem;"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="profile-card">
+                        <div class="profile-img-placeholder">
+                            <img src="assets/images/peace.jpeg" alt="Peace Michael — Data Analyst" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+                            <span style="display:none;align-items:center;gap:0.5rem;">
+                                <i data-lucide="user"></i>
+                                Portrait
+                            </span>
+                        </div>
+                        <p class="eyebrow">Portfolio profile</p>
+                        <h2>Data Analyst &bull; BI Analyst &bull; MSc Data Science</h2>
+                        <p>
+                           I'm a Data Analyst and Business Intelligence professional with an MSc in Data Science. Across six end-to-end projects I've engineered cloud data pipelines on Microsoft Azure, built and tuned machine learning models, performed rigorous statistical analysis in Python, and designed relational databases and interactive visualisations.</p>
+
+<p>I'm passionate about data-driven decision-making — bridging the gap between raw data and the strategic insights businesses act on.
+                        </p>
+                        <a class="text-button" href="about.html">
+                            Read more about Peace
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="social-links" aria-label="Social links">
-              <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
-              <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub">gh</a>
-              <a href="mailto:peace@example.com" aria-label="Email">✉</a>
-              <a href="tel:+447000000000" aria-label="Telephone">☎</a>
+        </section>
+
+        <!-- ===== IMPACT ===== -->
+        <section class="section section-soft">
+            <div class="container">
+                <div class="impact-grid">
+                    <article class="impact-card">
+                        <strong>1.9M+</strong>
+                        <h3>Records analysed</h3>
+                        <p>Azure Medallion Architecture project</p>
+                    </article>
+                    <article class="impact-card">
+                        <strong>50K+</strong>
+                        <h3>Records migrated</h3>
+                        <p>ERP transformation coordination</p>
+                    </article>
+                    <article class="impact-card">
+                        <strong>40+</strong>
+                        <h3>Business metrics</h3>
+                        <p>Executive and operational KPIs</p>
+                    </article>
+                    <article class="impact-card">
+                        <strong>150+</strong>
+                        <h3>Programme participants</h3>
+                        <p>Operational tracking support</p>
+                    </article>
+                </div>
             </div>
-          </div>
+        </section>
 
-          <div class="hero-visual" aria-label="Professional portrait placeholder">
-            <div class="dashboard-card hero-card profile-card">
-              <img src="assets/images/peace.jpeg" alt="Placeholder portrait for Peace Michael" />
-              <div class="profile-card-body">
-                <p class="eyebrow">Portfolio profile</p>
-                <h2>Data analyst, BI analyst, and MSc Data Science graduate</h2>
-                <p>I'm a Data Analyst and Business Intelligence professional pursuing an MSc in Data Science at York St John University, London. With 3+ years of hands-on experience across business process analysis, ERP implementation, and cloud-based analytics, I bridge the gap between raw data and strategic business decisions.
+        <!-- ===== PROJECTS ===== -->
+        <section class="section" id="projects">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Portfolio highlights</p>
+                    <h2>Featured Projects</h2>
+                </div>
 
-I've led organisation-wide digital transformation, managed the migration of four core business departments to Oracle NetSuite ERP, and built 40+ executive dashboards. My MSc capstone project involves designing a cloud-based big data analytics pipeline on Microsoft Azure processing millions of records.</p>
-                <a class="text-button" href="about.html">Read more about Peace</a>
-              </div>
+                <div class="project-grid" id="projectGrid">
+                    <!-- Project 1 -->
+                    <article class="project-card" data-category="cloud-data" data-project="azure">
+                        <div class="project-icon">
+                            <i data-lucide="cloud"></i>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-category">Cloud &amp; Data Engineering</p>
+                            <h3>Azure Cloud BI and Medallion Data Pipeline</h3>
+                            <p>Built a scalable data foundation to support reporting and analytics across structured business data.</p>
+                            <div class="project-tags">
+                                <span>Azure</span>
+                                <span>Medallion Architecture</span>
+                                <span>Power BI</span>
+                            </div>
+                            <p class="project-result"><strong>Result:</strong> Improved access to trusted data for reporting.</p>
+                            <a href="case-study-azure.html" class="text-button case-study-btn">
+                            View Case Study
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="project-card" data-category="business-intelligence" data-project="powerbi">
+                        <div class="project-icon">
+                            <i data-lucide="chart-column"></i>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-category">Business Intelligence</p>
+                            <h3>Executive Power BI Suite</h3>
+                            <p>Developed more than 40 Power BI metrics to help managers monitor sales, finance, HR, and inventory performance.</p>
+                            <div class="project-tags">
+                                <span>Power BI</span>
+                                <span>DAX</span>
+                                <span>KPI reporting</span>
+                            </div>
+                            <p class="project-result"><strong>Result:</strong> Strengthened executive visibility and reporting consistency.</p>
+                            <button class="text-button case-study-btn" data-project="powerbi">
+                                View Case Study
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="section-footer">
+                    <a class="text-button" href="projects.html">
+                        See all projects
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="section section-soft" id="about">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Professional profile</p>
-            <h2>Data, Business Intelligence &amp; Process Transformation</h2>
-          </div>
-          <div class="about-grid">
-            <div class="about-copy">
-              <p>
-                Peace connects business needs with data and technology through thoughtful analysis,
-                practical problem solving, and clear stakeholder communication. With experience spanning
-                data analysis, business intelligence, dashboard development, ERP implementation, process
-                mapping, cloud data pipelines, and operational improvement, Peace supports organisations in
-                making stronger and more informed decisions.
-              </p>
-              <p>
-                The focus is on turning complex information into understandable insight, creating operational
-                visibility, and supporting change that is useful for both leadership teams and day-to-day teams.
-              </p>
+        <!-- ===== EXPERIENCE ===== -->
+        <section class="section section-soft" id="experience">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Career journey</p>
+                    <h2>Experience</h2>
+                </div>
+                <div class="timeline">
+                    <article class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3>Data Analyst / BI Analyst</h3>
+                                    <p class="timeline-org">Cross-functional business and analytics environments</p>
+                                </div>
+                                <span class="date">2022 – Present</span>
+                            </div>
+                            <ul>
+                                <li>Delivered reporting, KPI development, and analytical support for operational and executive stakeholders.</li>
+                                <li>Built dashboard solutions and reporting outputs that improved reporting clarity and decision support.</li>
+                                <li>Worked across data quality, process improvement, and stakeholder communication.</li>
+                            </ul>
+                            <p class="tag-list"><strong>Tools:</strong> Power BI, Excel, SQL, Azure, NetSuite</p>
+                        </div>
+                    </article>
+                    <article class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3>Operational Support &amp; Process Coordination</h3>
+                                    <p class="timeline-org">Programme and service delivery environments</p>
+                                </div>
+                                <span class="date">2019 – 2022</span>
+                            </div>
+                            <ul>
+                                <li>Maintained accurate documentation, reporting, and records for high-volume operational activity.</li>
+                                <li>Supported incident review, risk monitoring, and compliance-aligned reporting processes.</li>
+                                <li>Developed strong communication and coordination habits that supported reliable delivery.</li>
+                            </ul>
+                            <p class="tag-list"><strong>Skills:</strong> Reporting, record management, incident analysis, compliance</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="section-footer">
+                    <a class="text-button" href="experience.html">
+                        View full experience
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
             </div>
-            <div class="about-panel">
-              <h3>Analytical strengths</h3>
-              <ul>
-                <li>Business-facing data analysis and reporting</li>
-                <li>Dashboard development with Power BI and Tableau</li>
-                <li>Process mapping, workflow refinement, and ERP support</li>
-                <li>Cloud-based data pipelines and operational tracking</li>
-              </ul>
+        </section>
+
+        <!-- ===== SKILLS ===== -->
+        <section class="section" id="skills">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Capabilities</p>
+                    <h2>Skills &amp; Technologies</h2>
+                </div>
+                <div class="skills-grid">
+                    <article class="skill-card">
+                        <h3>Data Analysis</h3>
+                        <ul>
+                            <li>Python</li>
+                            <li>Pandas</li>
+                            <li>NumPy</li>
+                            <li>SQL</li>
+                            <li>Excel</li>
+                            <li>Statistical analysis</li>
+                        </ul>
+                    </article>
+                    <article class="skill-card">
+                        <h3>Business Intelligence</h3>
+                        <ul>
+                            <li>Power BI</li>
+                            <li>Tableau</li>
+                            <li>Dashboard development</li>
+                            <li>KPI reporting</li>
+                            <li>Data storytelling</li>
+                            <li>DAX</li>
+                        </ul>
+                    </article>
+                    <article class="skill-card">
+                        <h3>Cloud &amp; Databases</h3>
+                        <ul>
+                            <li>Microsoft Azure</li>
+                            <li>Azure Blob Storage</li>
+                            <li>Data warehousing</li>
+                            <li>MySQL</li>
+                            <li>SQL Server</li>
+                            <li>Medallion Architecture</li>
+                        </ul>
+                    </article>
+                    <article class="skill-card">
+                        <h3>Business &amp; Systems</h3>
+                        <ul>
+                            <li>Oracle NetSuite</li>
+                            <li>Business process mapping</li>
+                            <li>ERP implementation</li>
+                            <li>Requirements gathering</li>
+                            <li>Stakeholder management</li>
+                            <li>BPMN</li>
+                        </ul>
+                    </article>
+                    <article class="skill-card">
+                        <h3>Security &amp; Operations</h3>
+                        <ul>
+                            <li>Splunk</li>
+                            <li>Microsoft Defender</li>
+                            <li>Incident analysis</li>
+                            <li>Risk reporting</li>
+                        </ul>
+                    </article>
+                </div>
+                <div class="section-footer">
+                    <a class="text-button" href="skills.html">
+                        View all skills
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="section">
-        <div class="container">
-          <div class="impact-grid">
-            <article class="impact-card">
-              <strong>1.9M+</strong>
-              <h3>Records analysed</h3>
-              <p>Supported an Azure Medallion Architecture project with large-scale data processing and reporting.</p>
-            </article>
-            <article class="impact-card">
-              <strong>50K+</strong>
-              <h3>Records migrated</h3>
-              <p>Contributed to ERP transformation activity through accurate migration planning and data coordination.</p>
-            </article>
-            <article class="impact-card">
-              <strong>40+</strong>
-              <h3>Business metrics created</h3>
-              <p>Developed executive and operational KPIs to improve visibility across business functions.</p>
-            </article>
-            <article class="impact-card">
-              <strong>150+</strong>
-              <h3>Programme participants supported</h3>
-              <p>Built operational tracking systems that helped support programme delivery and performance monitoring.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-soft" id="projects">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Portfolio highlights</p>
-            <h2>Featured Data &amp; Business Intelligence Projects</h2>
-          </div>
-
-          <div class="filter-group" role="tablist" aria-label="Project filters">
-            <button class="filter-pill active" data-filter="all">All Projects</button>
-            <button class="filter-pill" data-filter="data-analytics">Data Analytics</button>
-            <button class="filter-pill" data-filter="business-intelligence">Business Intelligence</button>
-            <button class="filter-pill" data-filter="cloud-data">Cloud &amp; Data Engineering</button>
-            <button class="filter-pill" data-filter="process-improvement">Business Process Improvement</button>
-          </div>
-
-          <div class="project-grid">
-            <article class="project-card" data-category="cloud-data">
-              <!-- Replace this placeholder visual with a real dashboard screenshot when available. -->
-              <img src="assets/projects/azure-medallion-dashboard.png" alt="Azure Medallion data pipeline dashboard preview" loading="lazy" />
-              <div class="project-content">
-                <p class="project-category">Cloud &amp; Data Engineering</p>
-                <h3>Azure Cloud BI and Medallion Data Pipeline</h3>
-                <p>Built a scalable data foundation to support reporting and analytics across structured business data.</p>
-                <div class="project-tags">
-                  <span>Azure</span>
-                  <span>Medallion Architecture</span>
-                  <span>Power BI</span>
+        <!-- ===== EDUCATION ===== -->
+        <section class="section section-soft" id="education">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Education &amp; credentials</p>
+                    <h2>Education</h2>
                 </div>
-                <p class="project-result"><strong>Result:</strong> Improved access to trusted data for reporting and analytical use.</p>
-                <button class="text-button" type="button" data-case-study="azure">View Case Study</button>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="process-improvement">
-              <!-- Replace this placeholder visual with a real ERP transformation screenshot when available. -->
-              <img src="assets/projects/netsuite-transformation.png" alt="Oracle NetSuite transformation workflow preview" loading="lazy" />
-              <div class="project-content">
-                <p class="project-category">Business Process Improvement</p>
-                <h3>Oracle NetSuite ERP Transformation</h3>
-                <p>Supported data migration and process readiness during an ERP transformation focused on operational continuity.</p>
-                <div class="project-tags">
-                  <span>Oracle NetSuite</span>
-                  <span>ERP</span>
-                  <span>Data migration</span>
+                <div class="education-grid">
+                    <article class="edu-card">
+                        <h3>MSc Data Science</h3>
+                        <p class="edu-school">York St John University</p>
+                        <p>Relevant modules: data analysis, statistics, machine learning, data engineering, and applied analytics.</p>
+                        <p class="meta"><strong>Completion:</strong> Expected graduation date to be confirmed</p>
+                    </article>
+                    <article class="edu-card">
+                        <h3>Professional Certifications</h3>
+                        <p>Certifications and training to be added as they are confirmed.</p>
+                        <p class="meta"><strong>Note:</strong> Replace this section with verified qualifications.</p>
+                    </article>
                 </div>
-                <p class="project-result"><strong>Result:</strong> Helped move more than 50,000 records with greater structure and oversight.</p>
-                <button class="text-button" type="button" data-case-study="netsuite">View Case Study</button>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="business-intelligence">
-              <img src="assets/projects/executive-powerbi-dashboard.png" alt="Executive Power BI dashboard preview" loading="lazy" />
-              <div class="project-content">
-                <p class="project-category">Business Intelligence</p>
-                <h3>Executive Power BI Suite</h3>
-                <p>Developed more than 40 Power BI metrics to help managers monitor sales, finance, HR, and inventory performance.</p>
-                <div class="project-tags">
-                  <span>Power BI</span>
-                  <span>DAX</span>
-                  <span>KPI reporting</span>
+                <div class="section-footer">
+                    <a class="text-button" href="education.html">
+                        View full education
+                        <i data-lucide="arrow-right"></i>
+                    </a>
                 </div>
-                <p class="project-result"><strong>Result:</strong> Strengthened executive visibility and reporting consistency.</p>
-                <button class="text-button" type="button" data-case-study="powerbi">View Case Study</button>
-              </div>
-            </article>
+            </div>
+        </section>
 
-            <article class="project-card" data-category="process-improvement">
-              <!-- Replace this placeholder visual with a real process map or workflow screenshot when available. -->
-              <img src="assets/projects/workflow-process-map.png" alt="Workflow and process improvement preview" loading="lazy" />
-              <div class="project-content">
-                <p class="project-category">Business Process Improvement</p>
-                <h3>Operations Process and Workflow Engineering</h3>
-                <p>Mapped operational workflows, identified process gaps, and improved handovers across functions.</p>
-                <div class="project-tags">
-                  <span>BPMN</span>
-                  <span>Visio</span>
-                  <span>Process mapping</span>
+        <!-- ===== CONTACT ===== -->
+        <section class="section" id="contact">
+            <div class="container contact-grid">
+                <div class="contact-copy">
+                    <p class="eyebrow">Contact</p>
+                    <h2>Let's Turn Data Into Better Decisions</h2>
+                    <p>
+                        Open to opportunities across consulting, financial services, technology, and corporate environments.
+                        Whether supporting strategy, reporting, transformation, or operational insight, I'm keen to contribute with clarity and impact.
+                    </p>
+                    <ul class="contact-list">
+                        <li><strong>Email:</strong> <a href="mailto:peace@example.com">peace@example.com</a></li>
+                        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/peace-michael" target="_blank" rel="noreferrer">linkedin.com/in/peace-michael</a></li>
+                        <li><strong>GitHub:</strong> <a href="https://github.com/peace-michael" target="_blank" rel="noreferrer">github.com/peace-michael</a></li>
+                        <li><strong>Telephone:</strong> <a href="tel:+447000000000">+44 7000 000000</a></li>
+                        <li><strong>Location:</strong> London, United Kingdom</li>
+                    </ul>
+                    <a class="text-button" href="contact.html">
+                        Go to contact page
+                        <i data-lucide="arrow-right"></i>
+                    </a>
                 </div>
-                <p class="project-result"><strong>Result:</strong> Simplified oversight and improved day-to-day process reliability.</p>
-                <button class="text-button" type="button" data-case-study="workflow">View Case Study</button>
-              </div>
-            </article>
 
-            <article class="project-card" data-category="data-analytics">
-              <!-- Replace this placeholder visual with a real incident or behavioural intelligence screenshot when available. -->
-              <img src="assets/projects/incident-trends-dashboard.png" alt="Incident trends and behavioural intelligence dashboard preview" loading="lazy" />
-              <div class="project-content">
-                <p class="project-category">Data Analytics</p>
-                <h3>Incident Trends and Behavioural Intelligence</h3>
-                <p>Analysed incident patterns and operational data to reveal recurring issues and support monitoring.</p>
-                <div class="project-tags">
-                  <span>Splunk</span>
-                  <span>Incident analysis</span>
-                  <span>Risk reporting</span>
-                </div>
-                <p class="project-result"><strong>Result:</strong> Improved visibility into trend behaviour and underlying risk factors.</p>
-                <button class="text-button" type="button" data-case-study="incident">View Case Study</button>
-              </div>
-            </article>
+                <form class="contact-form" id="contactForm" novalidate>
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" required placeholder="Your full name" />
 
-            <article class="project-card" data-category="business-intelligence">
-              <!-- Replace this placeholder visual with a real programme metrics screenshot when available. -->
-              <img src="assets/projects/edtech-kpi-tracker.png" alt="EdTech programme metrics dashboard preview" loading="lazy" />
-              <div class="project-content">
-                <p class="project-category">Business Intelligence</p>
-                <h3>EdTech Programme and Partner Metrics</h3>
-                <p>Tracked participant engagement and partner performance through structured reporting and dashboard views.</p>
-                <div class="project-tags">
-                  <span>Reporting</span>
-                  <span>Stakeholder tracking</span>
-                  <span>Programme metrics</span>
-                </div>
-                <p class="project-result"><strong>Result:</strong> Supported more than 150 participants with stronger operational visibility.</p>
-                <button class="text-button" type="button" data-case-study="edtech">View Case Study</button>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" required placeholder="you@example.com" />
 
-      <section class="section">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Analytics showcase</p>
-            <h2>Dashboard &amp; Analytics Gallery</h2>
-          </div>
-          <div class="gallery-grid">
-            <article class="gallery-card">
-              <img src="assets/projects/executive-powerbi-dashboard.png" alt="Executive Power BI dashboard preview" loading="lazy" />
-              <h3>Executive Power BI Dashboard</h3>
-              <p>Board-ready reporting for performance monitoring across multiple functions.</p>
-              <p class="meta"><strong>Tools:</strong> Power BI, DAX, Excel</p>
-              <p class="meta"><strong>Business use:</strong> Executive review and KPI tracking</p>
-              <a class="text-button" href="#projects">View project</a>
-            </article>
-            <article class="gallery-card">
-              <img src="assets/projects/azure-medallion-dashboard.png" alt="Azure data pipeline architecture preview" loading="lazy" />
-              <h3>Azure Data Pipeline Architecture</h3>
-              <p>Structured data movement and transformation supporting trusted reporting layers.</p>
-              <p class="meta"><strong>Tools:</strong> Azure, SQL, Medallion Architecture</p>
-              <p class="meta"><strong>Business use:</strong> Reliable analytics data foundations</p>
-              <a class="text-button" href="#projects">View project</a>
-            </article>
-            <article class="gallery-card">
-              <img src="assets/projects/edtech-kpi-tracker.png" alt="Operational KPI tracker preview" loading="lazy" />
-              <h3>Operational KPI Tracker</h3>
-              <p>Operational reporting that supported programme oversight and stakeholder visibility.</p>
-              <p class="meta"><strong>Tools:</strong> Reporting tools, Excel, SQL</p>
-              <p class="meta"><strong>Business use:</strong> Team performance and monitoring</p>
-              <a class="text-button" href="#projects">View project</a>
-            </article>
-          </div>
-        </div>
-      </section>
+                    <label for="subject">Subject</label>
+                    <input id="subject" name="subject" type="text" required placeholder="What's this about?" />
 
-      <section class="section section-soft" id="experience">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Career journey</p>
-            <h2>Experience</h2>
-          </div>
-          <div class="timeline">
-            <article class="timeline-item">
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <div class="timeline-header">
-                  <div>
-                    <h3>Data Analyst / BI Analyst</h3>
-                    <p class="timeline-org">Cross-functional business and analytics environments</p>
-                  </div>
-                  <span>2022 – Present</span>
-                </div>
-                <ul>
-                  <li>Delivered reporting, KPI development, and analytical support for operational and executive stakeholders.</li>
-                  <li>Built dashboard solutions and reporting outputs that improved reporting clarity and decision support.</li>
-                  <li>Worked across data quality, process improvement, and stakeholder communication to strengthen delivery.</li>
-                </ul>
-                <p class="tag-list"><strong>Tools:</strong> Power BI, Excel, SQL, Azure, NetSuite</p>
-              </div>
-            </article>
-            <article class="timeline-item">
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <div class="timeline-header">
-                  <div>
-                    <h3>Operational Support &amp; Process Coordination</h3>
-                    <p class="timeline-org">Programme and service delivery environments</p>
-                  </div>
-                  <span>2019 – 2022</span>
-                </div>
-                <ul>
-                  <li>Maintained accurate documentation, reporting, and records for high-volume operational activity.</li>
-                  <li>Supported incident review, risk monitoring, and compliance-aligned reporting processes.</li>
-                  <li>Developed strong communication and coordination habits that supported reliable delivery.</li>
-                </ul>
-                <p class="tag-list"><strong>Skills:</strong> Reporting, record management, incident analysis, compliance, communication</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" required placeholder="Tell me about your project or opportunity..."></textarea>
 
-      <section class="section" id="skills">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Capabilities</p>
-            <h2>Skills &amp; Technologies</h2>
-          </div>
-          <div class="skills-grid">
-            <article class="skill-card">
-              <h3>Data Analysis</h3>
-              <ul>
-                <li>Python</li>
-                <li>Pandas</li>
-                <li>NumPy</li>
-                <li>SQL</li>
-                <li>Excel</li>
-                <li>Statistical analysis</li>
-              </ul>
-            </article>
-            <article class="skill-card">
-              <h3>Business Intelligence</h3>
-              <ul>
-                <li>Power BI</li>
-                <li>Tableau</li>
-                <li>Dashboard development</li>
-                <li>KPI reporting</li>
-                <li>Data storytelling</li>
-                <li>DAX</li>
-              </ul>
-            </article>
-            <article class="skill-card">
-              <h3>Cloud &amp; Databases</h3>
-              <ul>
-                <li>Microsoft Azure</li>
-                <li>Azure Blob Storage</li>
-                <li>Data warehousing</li>
-                <li>MySQL</li>
-                <li>SQL Server</li>
-                <li>Medallion Architecture</li>
-              </ul>
-            </article>
-            <article class="skill-card">
-              <h3>Business &amp; Systems</h3>
-              <ul>
-                <li>Oracle NetSuite</li>
-                <li>Business process mapping</li>
-                <li>ERP implementation</li>
-                <li>Requirements gathering</li>
-                <li>Stakeholder management</li>
-                <li>BPMN</li>
-              </ul>
-            </article>
-            <article class="skill-card">
-              <h3>Security &amp; Operations</h3>
-              <ul>
-                <li>Splunk</li>
-                <li>Microsoft Defender</li>
-                <li>Incident analysis</li>
-                <li>Risk reporting</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-soft" id="education">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Education &amp; credentials</p>
-            <h2>Education and Certifications</h2>
-          </div>
-          <div class="education-grid">
-            <article class="edu-card">
-              <h3>MSc Data Science</h3>
-              <p class="edu-school">York St John University</p>
-              <p>Relevant modules included data analysis, statistics, machine learning, data engineering, and applied analytics.</p>
-              <p class="meta"><strong>Completion:</strong> Expected graduation date to be confirmed</p>
-            </article>
-            <article class="edu-card">
-              <h3>Professional and technical certifications</h3>
-              <p>Certifications and training should be added here to reflect the portfolio’s current credentials.</p>
-              <p class="meta"><strong>Note:</strong> Replace this section with verified qualifications as they are confirmed.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section contact-section" id="contact">
-        <div class="container contact-grid">
-          <div class="contact-copy">
-            <p class="eyebrow">Contact</p>
-            <h2>Let’s Turn Data Into Better Decisions</h2>
-            <p>
-              Open to opportunities across consulting, financial services, technology, and corporate environments.
-              Whether supporting strategy, reporting, transformation, or operational insight, Peace is keen to contribute with clarity and impact.
-            </p>
-            <ul class="contact-list">
-              <li><strong>Email:</strong> <a href="mailto:peace@example.com">peace@example.com</a></li>
-              <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">linkedin.com/in/peace-michael</a></li>
-              <li><strong>GitHub:</strong> <a href="https://github.com" target="_blank" rel="noreferrer">github.com/peace-michael</a></li>
-              <li><strong>Telephone:</strong> <a href="tel:+447000000000">+44 7000 000000</a></li>
-              <li><strong>Location:</strong> London, United Kingdom</li>
-            </ul>
-          </div>
-
-          <form class="contact-form" novalidate>
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" required />
-
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required />
-
-            <label for="organisation">Organisation</label>
-            <input id="organisation" name="organisation" type="text" />
-
-            <label for="subject">Subject</label>
-            <input id="subject" name="subject" type="text" required />
-
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-
-            <button class="button button-primary" type="submit">Send Message</button>
-            <p class="form-message" role="status" aria-live="polite"></p>
-          </form>
-        </div>
-      </section>
+                    <button class="button button-primary" type="submit">
+                        <i data-lucide="send"></i>
+                        Send Message
+                    </button>
+                    <p class="form-message" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-shell">
-        <p>© 2026 Peace Michael. Built for thoughtful, evidence-led business analytics.</p>
-        <a href="#home">Back to top</a>
-      </div>
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container footer-shell">
+            <p>&copy; 2026 Peace Michael. Built for thoughtful, evidence-led business analytics.</p>
+            <a href="#main-content">Back to top</a>
+        </div>
     </footer>
 
-    <div class="modal" id="case-study-modal" aria-hidden="true">
-      <div class="modal-backdrop" data-close-modal></div>
-      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-        <button class="modal-close" type="button" aria-label="Close case study" data-close-modal>×</button>
-        <div class="modal-body" id="modal-content"></div>
-      </div>
+    <!-- ===== MODAL ===== -->
+    <div class="modal-overlay" id="caseStudyModal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-dialog">
+            <button class="modal-close" id="modalClose" aria-label="Close case study">&times;</button>
+            <div class="modal-body" id="modalContent">
+                <!-- Dynamic content injected by JavaScript -->
+            </div>
+        </div>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // ---- Lucide ----
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+
+        // ---- Mobile Nav Toggle ----
+        const navToggle = document.querySelector('.nav-toggle');
+        const siteNav = document.getElementById('site-nav');
+
+        navToggle.addEventListener('click', function() {
+            const expanded = this.getAttribute('aria-expanded') === 'true' ? false : true;
+            this.setAttribute('aria-expanded', expanded);
+            siteNav.classList.toggle('open');
+            document.body.style.overflow = expanded ? 'hidden' : '';
+        });
+
+        document.querySelectorAll('.nav-link, .button, .theme-toggle').forEach(el => {
+            el.addEventListener('click', () => {
+                navToggle.setAttribute('aria-expanded', 'false');
+                siteNav.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // ---- Dark Mode ----
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+
+        function getPreferredTheme() {
+            const stored = localStorage.getItem('theme');
+            if (stored === 'dark' || stored === 'light') return stored;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function setTheme(theme) {
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+            localStorage.setItem('theme', theme);
+            if (themeIcon) {
+                themeIcon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            }
+            const toggleText = themeToggle.querySelector('span');
+            if (toggleText) {
+                toggleText.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+            }
+        }
+
+        const currentTheme = getPreferredTheme();
+        setTheme(currentTheme);
+
+        themeToggle.addEventListener('click', function() {
+            const next = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+            setTheme(next);
+        });
+
+        // ---- Modal functionality ----
+        const modal = document.getElementById('caseStudyModal');
+        const modalContent = document.getElementById('modalContent');
+        const modalClose = document.getElementById('modalClose');
+
+        // Project data
+        const projectData = {
+            azure: {
+                title: 'Azure Cloud BI and Medallion Data Pipeline',
+                category: 'Cloud & Data Engineering',
+                tags: ['Azure', 'Medallion Architecture', 'Power BI', 'SQL'],
+                description: 'Built a scalable data foundation to support reporting and analytics across structured business data. Implemented a medallion architecture (bronze, silver, gold layers) to ensure data quality and reliability.',
+                detail: 'The pipeline processed over 1.9 million records, enabling faster and more accurate reporting. The project improved data accessibility for the analytics team and reduced reporting time by 40%.'
+            },
+            powerbi: {
+                title: 'Executive Power BI Suite',
+                category: 'Business Intelligence',
+                tags: ['Power BI', 'DAX', 'KPI reporting', 'Excel'],
+                description: 'Developed more than 40 Power BI metrics to help managers monitor sales, finance, HR, and inventory performance. Created interactive dashboards with drill-through capabilities.',
+                detail: 'The suite provided a single source of truth for executive decision-making, reducing reporting inconsistencies and saving 15+ hours per week in manual reporting efforts.'
+            }
+        };
+
+        function openModal(projectId) {
+            const data = projectData[projectId];
+            if (!data) return;
+
+            modalContent.innerHTML = `
+                <p class="project-category">${data.category}</p>
+                <h2 id="modal-title">${data.title}</h2>
+                <div class="modal-tags">
+                    ${data.tags.map(tag => `<span>${tag}</span>`).join('')}
+                </div>
+                <p>${data.description}</p>
+                <div class="modal-detail">
+                    <strong>Key outcome:</strong> ${data.detail}
+                </div>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event listeners for case study buttons
+        document.querySelectorAll('.case-study-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const project = this.dataset.project;
+                openModal(project);
+            });
+        });
+
+        // Close modal on backdrop click, close button, or Escape key
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+        modalClose.addEventListener('click', closeModal);
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+        });
+
+        // ---- Contact Form ----
+        const form = document.getElementById('contactForm');
+        const messageEl = form.querySelector('.form-message');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = form.querySelector('#name').value.trim();
+            const email = form.querySelector('#email').value.trim();
+            const subject = form.querySelector('#subject').value.trim();
+            const message = form.querySelector('#message').value.trim();
+
+            if (!name || !email || !subject || !message) {
+                messageEl.textContent = 'Please fill in all required fields.';
+                messageEl.className = 'form-message error';
+                return;
+            }
+
+            if (!email.includes('@') || !email.includes('.')) {
+                messageEl.textContent = 'Please enter a valid email address.';
+                messageEl.className = 'form-message error';
+                return;
+            }
+
+            messageEl.textContent = 'Thank you! Your message has been sent successfully.';
+            messageEl.className = 'form-message success';
+            form.reset();
+
+            setTimeout(() => {
+                messageEl.textContent = '';
+                messageEl.className = 'form-message';
+            }, 5000);
+        });
+    </script>
+</body>
 </html>

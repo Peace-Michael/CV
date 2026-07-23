@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://unpkg.com/lucide@latest">
-    </script>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <meta name="description" content="Experience — Peace Michael's professional journey in data analytics, business intelligence, and business process improvement." />
     <title>Experience | Peace Michael</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         /* ===== Reset & Base ===== */
         *,
@@ -22,64 +22,32 @@
         }
 
         :root {
-            --bg: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-card: #ffffff;
-            --bg-hover: #f1f5f9;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-2: #f8fbff;
             --text: #0f172a;
-            --text-secondary: #475569;
-            --text-muted: #94a3b8;
+            --muted: #475569;
+            --accent: #2563eb;
+            --accent-soft: #dbeafe;
             --border: #e2e8f0;
-            --border-light: #f1f5f9;
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --primary-light: #dbeafe;
-            --primary-foreground: #ffffff;
-            --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-            --shadow-hover: 0 10px 40px rgba(0, 0, 0, 0.08);
-            --radius: 0.75rem;
-            --radius-full: 9999px;
-            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --max-width: 72rem;
-            --nav-height: 4.5rem;
-        }
-
-        .dark {
-            --bg: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-card: #1e293b;
-            --bg-hover: #334155;
-            --text: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            --border: #334155;
-            --border-light: #1e293b;
-            --primary: #3b82f6;
-            --primary-hover: #60a5fa;
-            --primary-light: #1e3a5f;
-            --primary-foreground: #ffffff;
-            --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-            --shadow-hover: 0 10px 40px rgba(0, 0, 0, 0.4);
+            --shadow: 0 20px 45px rgba(15, 23, 42, 0.06);
+            --radius: 24px;
+            --nav-height: 72px;
         }
 
         html {
             scroll-behavior: smooth;
             -webkit-tap-highlight-color: transparent;
-            overflow-x: hidden;
         }
 
         body {
-            font-family: var(--font);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
-            transition: background var(--transition), color var(--transition);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             padding-top: var(--nav-height);
-            overflow-x: hidden;
-            min-height: 100vh;
         }
 
         a {
@@ -93,10 +61,10 @@
             top: -9999px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--primary);
-            color: var(--primary-foreground);
+            background: var(--accent);
+            color: #fff;
             padding: 0.75rem 1.5rem;
-            border-radius: var(--radius);
+            border-radius: 8px;
             z-index: 9999;
             font-weight: 600;
             font-size: 0.875rem;
@@ -107,7 +75,7 @@
 
         /* ===== Container ===== */
         .container {
-            max-width: var(--max-width);
+            max-width: 1120px;
             margin: 0 auto;
             padding: 0 1rem;
             width: 100%;
@@ -130,17 +98,12 @@
             left: 0;
             right: 0;
             z-index: 100;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            transition: background var(--transition), border-color var(--transition);
+            background: rgba(248, 250, 252, 0.9);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
             height: var(--nav-height);
             display: flex;
             align-items: center;
-        }
-        .dark .site-header {
-            background: rgba(15, 23, 42, 0.85);
         }
 
         .nav-shell {
@@ -149,46 +112,30 @@
             justify-content: space-between;
             width: 100%;
             gap: 0.5rem;
+            min-height: var(--nav-height);
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            flex-shrink: 0;
+            gap: 0.75rem;
             font-weight: 700;
+            letter-spacing: -0.02em;
             font-size: 1.125rem;
             color: var(--text);
-            transition: color var(--transition);
-        }
-        .brand-mark {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 2.25rem;
-            height: 2.25rem;
-            border-radius: 0.5rem;
-            background: var(--primary);
-            color: #fff;
-            font-weight: 800;
-            font-size: 0.875rem;
-            letter-spacing: -0.025em;
-            transition: transform var(--transition);
             flex-shrink: 0;
         }
-        .brand:hover .brand-mark {
-            transform: scale(1.05);
-        }
-        .brand-text {
-            display: none;
-        }
-        @media (min-width: 480px) {
-            .brand-text {
-                display: inline;
-            }
+        .brand-mark {
+            display: inline-grid;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #60a5fa);
+            color: #fff;
+            font-size: 0.95rem;
         }
 
-        /* Nav toggle - always visible on mobile */
         .nav-toggle {
             display: flex;
             flex-direction: column;
@@ -202,14 +149,11 @@
             justify-content: center;
             align-items: center;
             border-radius: 0.5rem;
-            transition: background var(--transition);
-            position: relative;
-            z-index: 101;
+            transition: background 0.2s;
             flex-shrink: 0;
         }
-        .nav-toggle:hover,
-        .nav-toggle:active {
-            background: var(--bg-hover);
+        .nav-toggle:hover {
+            background: var(--surface-2);
         }
         .nav-toggle span {
             display: block;
@@ -217,7 +161,7 @@
             height: 2.5px;
             background: var(--text);
             border-radius: 2px;
-            transition: all var(--transition);
+            transition: all 0.25s;
             transform-origin: center;
         }
         .nav-toggle[aria-expanded="true"] span:nth-child(1) {
@@ -236,7 +180,6 @@
             }
         }
 
-        /* Nav links - mobile overlay */
         .site-nav {
             display: none;
             flex-direction: column;
@@ -246,15 +189,14 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: var(--bg);
-            border-bottom: 1px solid var(--border);
+            background: var(--surface);
             padding: 1.5rem 1.25rem;
-            box-shadow: var(--shadow-hover);
-            transition: background var(--transition), border-color var(--transition);
+            box-shadow: var(--shadow);
             overflow-y: auto;
             z-index: 99;
+            border-top: 1px solid var(--border);
         }
-        .site-nav.open {
+        .site-nav.is-open {
             display: flex;
         }
         @media (min-width: 768px) {
@@ -263,38 +205,34 @@
                 flex-direction: row;
                 position: static;
                 background: none;
-                border-bottom: none;
                 box-shadow: none;
                 padding: 0;
                 gap: 0.125rem;
                 align-items: center;
                 overflow-y: visible;
                 bottom: auto;
+                border-top: 0;
             }
         }
 
         .nav-link {
             padding: 0.75rem 1rem;
-            border-radius: var(--radius-full);
+            border-radius: 999px;
             font-size: 1rem;
             font-weight: 500;
-            color: var(--text-secondary);
-            transition: all var(--transition);
+            color: var(--muted);
+            transition: all 0.2s;
             display: inline-block;
             width: 100%;
             text-align: left;
         }
         .nav-link:hover {
             color: var(--text);
-            background: var(--bg-hover);
+            background: var(--surface-2);
         }
         .nav-link.active {
-            color: var(--primary);
-            background: var(--primary-light);
-        }
-        .dark .nav-link.active {
-            color: var(--primary-hover);
-            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent);
+            background: var(--accent-soft);
         }
         @media (min-width: 768px) {
             .nav-link {
@@ -312,12 +250,12 @@
             gap: 0.5rem;
             font-weight: 600;
             font-size: 0.875rem;
-            border-radius: var(--radius-full);
+            border-radius: 999px;
             padding: 0.5rem 1.25rem;
-            transition: all var(--transition);
+            transition: all 0.2s;
             cursor: pointer;
             border: none;
-            font-family: var(--font);
+            font-family: inherit;
             background: transparent;
             color: var(--text);
             width: 100%;
@@ -326,13 +264,9 @@
             background: var(--text);
             color: var(--bg);
         }
-        .dark .button-primary {
-            background: var(--text);
-            color: var(--bg);
-        }
         .button-primary:hover {
             transform: translateY(-1px);
-            box-shadow: var(--shadow-hover);
+            box-shadow: var(--shadow);
         }
         .button-small {
             padding: 0.5rem 1rem;
@@ -348,42 +282,6 @@
             }
         }
 
-        .theme-toggle {
-            background: none;
-            border: none;
-            padding: 0.75rem 1rem;
-            border-radius: var(--radius-full);
-            cursor: pointer;
-            color: var(--text-secondary);
-            transition: all var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            font-size: 1rem;
-            font-weight: 500;
-            width: 100%;
-            text-align: left;
-        }
-        .theme-toggle:hover {
-            background: var(--bg-hover);
-            color: var(--text);
-        }
-        .theme-toggle .lucide {
-            width: 1.25rem;
-            height: 1.25rem;
-        }
-        @media (min-width: 768px) {
-            .theme-toggle {
-                padding: 0.5rem;
-                width: auto;
-                text-align: center;
-            }
-            .theme-toggle span {
-                display: none;
-            }
-        }
-
         /* ===== Sections ===== */
         .section {
             padding: 2rem 0 3rem;
@@ -394,42 +292,37 @@
             }
         }
 
-        /* ===== Experience Page ===== */
-        .experience-hero {
-            padding-top: 0.5rem;
+        .section-heading {
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards;
         }
-        .experience-hero h1 {
+        .section-heading .eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+        .section-heading h1 {
             font-size: 1.75rem;
             font-weight: 800;
             letter-spacing: -0.03em;
             line-height: 1.15;
             color: var(--text);
-            margin-bottom: 0.5rem;
         }
-        @media (min-width: 480px) {
-            .experience-hero h1 {
-                font-size: 2rem;
+        .section-heading p {
+            color: var(--muted);
+            margin-top: 0.5rem;
+            max-width: 600px;
+        }
+        @media (min-width: 768px) {
+            .section-heading .eyebrow {
+                font-size: 0.8125rem;
             }
-        }
-        @media (min-width: 640px) {
-            .experience-hero h1 {
+            .section-heading h1 {
                 font-size: 2.5rem;
-            }
-        }
-        @media (min-width: 768px) {
-            .experience-hero h1 {
-                font-size: 3.5rem;
-            }
-        }
-        .experience-hero .subtitle {
-            font-size: 0.9375rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-        @media (min-width: 768px) {
-            .experience-hero .subtitle {
-                font-size: 1.25rem;
             }
         }
 
@@ -438,13 +331,39 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
         }
         @media (min-width: 768px) {
             .eyebrow {
                 font-size: 0.8125rem;
             }
+        }
+
+        .text-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--accent);
+            transition: all 0.2s;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .text-button:hover {
+            gap: 0.625rem;
+            color: var(--accent);
+        }
+        .text-button .lucide {
+            width: 1rem;
+            height: 1rem;
+            transition: transform 0.2s;
+        }
+        .text-button:hover .lucide {
+            transform: translateX(2px);
         }
 
         /* ===== Timeline ===== */
@@ -483,28 +402,15 @@
             position: relative;
             padding-bottom: 2rem;
             opacity: 0;
-            transform: translateY(24px);
             animation: fadeUp 0.6s ease forwards;
         }
         .timeline-item:last-child {
             padding-bottom: 0;
         }
-        .timeline-item:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-        .timeline-item:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        .timeline-item:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        .timeline-item:nth-child(1) { animation-delay: 0.05s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.15s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.2s; }
 
         .timeline-marker {
             position: absolute;
@@ -513,27 +419,18 @@
             width: 0.75rem;
             height: 0.75rem;
             border-radius: 50%;
-            background: var(--primary);
+            background: var(--accent);
             border: 2px solid var(--bg);
-            box-shadow: 0 0 0 3px var(--primary-light);
-            transition: all var(--transition);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+            transition: all 0.25s;
             z-index: 1;
             flex-shrink: 0;
-        }
-        .dark .timeline-marker {
-            border-color: var(--bg);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
         }
         @media (min-width: 640px) {
             .timeline-marker {
                 left: -2rem;
                 width: 0.875rem;
                 height: 0.875rem;
-                border-width: 2px;
-                box-shadow: 0 0 0 3px var(--primary-light);
-            }
-            .dark .timeline-marker {
-                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
             }
         }
         @media (min-width: 768px) {
@@ -542,32 +439,17 @@
                 width: 1rem;
                 height: 1rem;
                 border-width: 3px;
-                box-shadow: 0 0 0 4px var(--primary-light);
+                box-shadow: 0 0 0 4px var(--accent-soft);
             }
-            .dark .timeline-marker {
-                box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
-            }
-        }
-
-        .timeline-item:hover .timeline-marker {
-            transform: scale(1.2);
-            box-shadow: 0 0 0 6px var(--primary-light);
         }
 
         .timeline-content {
-            background: var(--bg-card);
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 1rem 1rem 1.25rem;
-            transition: all var(--transition);
+            transition: all 0.25s;
             box-shadow: var(--shadow);
-            width: 100%;
-            overflow: hidden;
-        }
-        @media (min-width: 480px) {
-            .timeline-content {
-                padding: 1.25rem 1.25rem 1.5rem;
-            }
         }
         @media (min-width: 768px) {
             .timeline-content {
@@ -576,8 +458,8 @@
         }
         .timeline-content:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--primary);
+            box-shadow: 0 25px 50px rgba(15, 23, 42, 0.08);
+            border-color: var(--accent);
         }
 
         .timeline-header {
@@ -594,18 +476,11 @@
                 flex-wrap: wrap;
             }
         }
-
         .timeline-header h3 {
             font-size: 1.0625rem;
             font-weight: 700;
             color: var(--text);
             letter-spacing: -0.02em;
-            word-break: break-word;
-        }
-        @media (min-width: 640px) {
-            .timeline-header h3 {
-                font-size: 1.125rem;
-            }
         }
         @media (min-width: 768px) {
             .timeline-header h3 {
@@ -615,29 +490,18 @@
         .timeline-org {
             font-size: 0.8125rem;
             font-weight: 500;
-            color: var(--text-secondary);
+            color: var(--muted);
             margin-top: 0.125rem;
-            word-break: break-word;
-        }
-        @media (min-width: 768px) {
-            .timeline-org {
-                font-size: 0.875rem;
-            }
         }
         .timeline-header .date {
             font-size: 0.65rem;
             font-weight: 600;
-            color: var(--primary);
+            color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 0.04em;
             white-space: nowrap;
             flex-shrink: 0;
             padding-top: 0.125rem;
-        }
-        @media (min-width: 640px) {
-            .timeline-header .date {
-                font-size: 0.7rem;
-            }
         }
         @media (min-width: 768px) {
             .timeline-header .date {
@@ -657,19 +521,12 @@
             align-items: flex-start;
             gap: 0.5rem;
             font-size: 0.8125rem;
-            color: var(--text-secondary);
+            color: var(--muted);
             line-height: 1.6;
-            word-break: break-word;
-        }
-        @media (min-width: 640px) {
-            .timeline-content ul li {
-                font-size: 0.875rem;
-                gap: 0.625rem;
-            }
         }
         @media (min-width: 768px) {
             .timeline-content ul li {
-                font-size: 0.9375rem;
+                font-size: 0.875rem;
             }
         }
         .timeline-content ul li::before {
@@ -679,32 +536,33 @@
             width: 0.3125rem;
             height: 0.3125rem;
             border-radius: 50%;
-            background: var(--primary);
+            background: var(--accent);
             margin-top: 0.55rem;
             opacity: 0.7;
         }
-        @media (min-width: 640px) {
-            .timeline-content ul li::before {
-                width: 0.375rem;
-                height: 0.375rem;
-                margin-top: 0.55rem;
-            }
+
+        .tag-list {
+            font-size: 0.8125rem;
+            color: var(--muted);
+            margin-top: 0.75rem;
+        }
+        .tag-list strong {
+            color: var(--text);
         }
 
         /* ===== Footer ===== */
         .site-footer {
             border-top: 1px solid var(--border);
-            padding: 1.25rem 0;
-            margin-top: 1.5rem;
-            transition: border-color var(--transition);
+            padding: 1rem 0;
+            margin-top: 1rem;
         }
         .footer-shell {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.8125rem;
-            color: var(--text-secondary);
+            font-size: 0.75rem;
+            color: var(--muted);
         }
         @media (min-width: 640px) {
             .footer-shell {
@@ -713,12 +571,24 @@
             }
         }
         .footer-shell a {
-            color: var(--text-secondary);
-            transition: color var(--transition);
+            color: var(--muted);
+            transition: color 0.2s;
             font-weight: 500;
         }
         .footer-shell a:hover {
-            color: var(--primary);
+            color: var(--accent);
+        }
+
+        /* ===== Animations ===== */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ===== Utility ===== */
@@ -740,26 +610,25 @@
             height: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--bg-secondary);
+            background: var(--bg);
         }
         ::-webkit-scrollbar-thumb {
-            background: var(--text-muted);
+            background: var(--muted);
             border-radius: 8px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--text-secondary);
+            background: var(--text);
         }
     </style>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <!-- ===== HEADER ===== -->
-    <header class="site-header" role="banner">
+    <header class="site-header">
         <div class="container nav-shell">
             <a class="brand" href="index.html" aria-label="Peace Michael home">
                 <span class="brand-mark">PM</span>
-                <span class="brand-text">Peace Michael</span>
+                <span>Peace Michael</span>
             </a>
 
             <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
@@ -775,134 +644,159 @@
                 <a class="nav-link" href="education.html">Education</a>
                 <a class="nav-link" href="contact.html">Contact</a>
                 <a class="button button-small button-primary" href="assets/Peace-Michael-CV.pdf" download>Download CV</a>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                    <i data-lucide="moon" id="themeIcon"></i>
-                    <span>Dark Mode</span>
-                </button>
             </nav>
         </div>
     </header>
 
-    <!-- ===== MAIN ===== -->
     <main id="main-content">
-        <section class="section experience-hero">
+        <section class="section">
             <div class="container">
-                <div>
+                <div class="section-heading">
                     <p class="eyebrow">Experience</p>
                     <h1>Analytical, operational and transformation-focused career path</h1>
-                    <p class="subtitle">A timeline of my professional journey, driving data strategy and execution across industries.</p>
+                    <p>A timeline of my professional journey, driving data strategy, process improvement, and operational excellence across industries.</p>
                 </div>
 
                 <div class="timeline">
-                    <!-- Item 1 -->
+                    <!-- Role 1: SmartShifts Agency -->
                     <article class="timeline-item">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
                             <div class="timeline-header">
                                 <div>
-                                    <h3>Data Analyst / BI Analyst</h3>
-                                    <p class="timeline-org">Cross-functional business and analytics environments</p>
+                                    <h3>Support Worker</h3>
+                                    <p class="timeline-org">SmartShifts Agency, London, UK</p>
                                 </div>
-                                <span class="date">2022 – Present</span>
+                                <span class="date">Sept 2025 – Present</span>
                             </div>
                             <ul>
-                                <li>Delivered reporting, KPI development, and analytical support for operational and executive stakeholders.</li>
-                                <li>Built dashboard solutions and reporting outputs that improved reporting clarity and decision support.</li>
-                                <li>Worked across data quality, process improvement, and stakeholder communication to strengthen delivery.</li>
+                                <li>Supported the day-to-day care of 10+ young people across multiple residential settings by implementing person-centred care plans, behavioural support strategies and safeguarding procedures, maintaining 100% compliance with Ofsted standards and organisational policies.</li>
+                                <li>Produced 100+ incident reports, daily logs, key-working records and safeguarding documentation using electronic recording systems to document care delivery and behavioural observations, improving record accuracy and supporting informed multidisciplinary decision-making.</li>
+                                <li>Analysed behavioural patterns, safeguarding concerns and risk indicators by monitoring daily observations and reviewing incident trends, contributing to proactive intervention strategies, and reducing repeat behavioural incidents.</li>
+                                <li>Collaborated with 15+ multidisciplinary professionals, including social workers, therapists, education providers and healthcare teams, to coordinate care plans and review young people's progress, improving communication and continuity of care.</li>
+                                <li>Managed medication administration, welfare checks and risk assessments by following organisational policies and regulatory guidelines, maintaining 100% compliance with medication and safeguarding procedures.</li>
+                                <li>Supported young people through emotional dysregulation using trauma-informed practice, therapeutic communication and de-escalation techniques, reducing the need for restrictive interventions, and improving emotional regulation outcomes.</li>
                             </ul>
+                            <p class="tag-list"><strong>Highlights:</strong> Successfully supported 10+ young people across multiple residential homes while maintaining 100% safeguarding and documentation compliance, producing 300+ professional reports, strengthening multidisciplinary collaboration, and contributing to improved behavioural outcomes through evidence-based care planning.</p>
+                            <p class="tag-list"><strong>Skills:</strong> Safeguarding, Incident reporting, Behavioural analysis, Multidisciplinary collaboration, Trauma-informed practice</p>
                         </div>
                     </article>
 
-                    <!-- Item 2 -->
+                    <!-- Role 2: NewAge Mobile Concepts -->
                     <article class="timeline-item">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
                             <div class="timeline-header">
                                 <div>
-                                    <h3>Operational Support &amp; Process Coordination</h3>
-                                    <p class="timeline-org">Programme and service delivery environments</p>
+                                    <h3>Business Process &amp; Data Analyst</h3>
+                                    <p class="timeline-org">NewAge Mobile Concepts Limited, Lagos, Nigeria</p>
                                 </div>
-                                <span class="date">2019 – 2022</span>
+                                <span class="date">Sept 2022 – Sept 2025</span>
                             </div>
                             <ul>
-                                <li>Maintained accurate documentation, reporting, and records for high-volume operational activity.</li>
-                                <li>Supported incident review, risk monitoring, and compliance-aligned reporting processes.</li>
-                                <li>Developed strong communication and coordination habits that supported reliable delivery.</li>
+                                <li>Established the organization's first Information Technology (IT) department by developing the technology strategy, defining operational processes and recruiting technical resources, reducing IT support response times by 60% and driving organisation-wide digital transformation.</li>
+                                <li>Led the migration of Sales, Human Resources, Finance and Inventory from manual paper-based processes to a cloud-based Oracle NetSuite ERP platform by gathering business requirements, redesigning workflows and overseeing data migration, reducing manual data processing by 85%, improving data accuracy by 95% and increasing operational efficiency by 40%.</li>
+                                <li>Managed the end-to-end implementation of Oracle NetSuite ERP for 30+ employees by configuring workflows, coordinating stakeholders and delivering user training, achieving 100% user adoption across all key departments.</li>
+                                <li>Designed and standardised 20+ automated digital workflows using ERP and cloud technologies to eliminate manual approval processes, reducing document processing time by 70% and increasing departmental productivity by 35%.</li>
+                                <li>Conducted business process analysis across 4 core business departments by mapping workflows, analysing bottlenecks and engaging department managers, reducing operational costs by 15% while improving service delivery by 30%.</li>
+                                <li>Developed 40+ executive dashboards, KPI reports and operational performance reports using ERP data, Excel and Power BI, reducing report preparation time by 75% and enabling faster strategic decision-making.</li>
+                                <li>Led ERP implementation training for 30+ employees by developing user guides and facilitating workshops, achieving 100% successful system adoption and reducing post-implementation support requests by 65%.</li>
+                                <li>Performed data cleansing, validation and migration of 50,000+ historical business records into Oracle NetSuite using structured quality assurance processes, achieving 98% data integrity and improving reporting reliability.</li>
                             </ul>
+                            <p class="tag-list"><strong>Highlights:</strong> Successfully established the organization's first IT department, led the digital transformation of four core business departments (Sales, HR, Finance and Inventory), implemented a cloud-based Oracle NetSuite ERP solution, reducing manual processes by 85%, improving data accuracy by 95%, reducing report preparation time by 75%, increasing operational efficiency by 40%, and achieving 100% ERP adoption across key business functions.</p>
+                            <p class="tag-list"><strong>Tools:</strong> Power BI, Excel, SQL, Azure, Oracle NetSuite, Python</p>
                         </div>
                     </article>
+
+                    <!-- Role 3: Techstarters Africa -->
+                    <article class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3>Director &amp; Business Manager</h3>
+                                    <p class="timeline-org">Techstarters Africa, Lagos, Nigeria</p>
+                                </div>
+                                <span class="date">Jan 2023 – Dec 2023</span>
+                            </div>
+                            <ul>
+                                <li>Directed technology education program for 150+ learners by coordinating training schedules, managing instructors and overseeing program delivery, achieving a 95% program completion rate and improving learner satisfaction.</li>
+                                <li>Managed relationships with 10+ corporate partners, trainers and stakeholders by coordinating meetings, negotiating partnerships and monitoring program objectives, increasing strategic collaborations by 40%.</li>
+                                <li>Led a multidisciplinary team of 15+ instructors, mentors and administrative staff through structured project management and performance monitoring, improving program delivery efficiency by 35%.</li>
+                                <li>Developed program dashboards and operational reports using Excel and reporting tools to monitor KPIs, learner engagement and operational performance, reducing manual reporting time by 60%.</li>
+                                <li>Planned and delivered 50+ technology and cybersecurity workshops by coordinating trainers, learning resources and operational logistics, increasing learner participation by 45%.</li>
+                                <li>Introduced digital reporting processes and standardised operational documentation, reducing administrative workload by 40% and improving reporting accuracy by 90%.</li>
+                                <li>Mentored aspiring Cyber Security Analysts through structured technical coaching and career guidance, supporting learners in obtaining professional certifications and employment opportunities.</li>
+                            </ul>
+                            <p class="tag-list"><strong>Highlights:</strong> Successfully managed technology programmes supporting 150+ learners, increased strategic partnerships by 40%, improved programme delivery efficiency by 35%, reduced manual reporting by 60%, and increased learner participation by 45% while mentoring future Cyber Security professionals.</p>
+                            <p class="tag-list"><strong>Skills:</strong> Programme management, Partnership development, Team leadership, Reporting, Mentoring, Workshop delivery</p>
+                        </div>
+                    </article>
+
+                    <!-- Role 4: The One Spirit Company -->
+                    <article class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div>
+                                    <h3>Business Coordinator</h3>
+                                    <p class="timeline-org">The One Spirit Company Limited, Lagos, Nigeria</p>
+                                </div>
+                                <span class="date">April 2022 – Sept 2023</span>
+                            </div>
+                            <ul>
+                                <li>Analysed operational workflows across 5+ business functions by engaging stakeholders, reviewing business processes and identifying operational bottlenecks, reducing operational costs by 15% and improving service delivery by 30%.</li>
+                                <li>Prepared 100+ business reports, dashboards and operational performance summaries using Excel and reporting tools, improving reporting efficiency by 60% and supporting executive decision-making.</li>
+                                <li>Collaborated with developers, business leaders and operational stakeholders to gather requirements and implement process improvements, increasing project delivery efficiency by 35%.</li>
+                                <li>Managed multiple operational improvement projects simultaneously by coordinating resources, timelines and stakeholder communication, achieving a 95% on-time project delivery rate.</li>
+                                <li>Developed operational policies, procedures and workflow documentation, improving compliance by 40% and reducing process inconsistencies across departments.</li>
+                                <li>Analysed financial and operational data to identify business improvement opportunities, supporting strategic initiatives that increased operational performance by 25%.</li>
+                            </ul>
+                            <p class="tag-list"><strong>Highlights:</strong> Successfully coordinated 500+ executive engagements, prepared 250+ executive reports and board papers, improved executive scheduling efficiency by 70%, reduced stakeholder response times by 50%, and enhanced document management efficiency by 80% while supporting executive-level strategic decision-making.</p>
+                            <p class="tag-list"><strong>Skills:</strong> Operational analysis, Reporting, Project management, Policy development, Stakeholder engagement, Data analysis</p>
+                        </div>
+                    </article>
+
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="site-footer" role="contentinfo">
+    <footer class="site-footer">
         <div class="container footer-shell">
-            <p>&copy; 2026 Peace Michael. All rights reserved.</p>
+            <p>&copy; 2026 Peace Michael. Built for thoughtful, evidence-led business analytics.</p>
             <a href="#main-content">Back to top</a>
         </div>
     </footer>
 
-    <!-- ===== SCRIPTS ===== -->
     <script>
-        // ---- Lucide ----
+        // ---- Mobile Nav Toggle ----
+        const navToggle = document.querySelector('.nav-toggle');
+        const siteNav = document.querySelector('.site-nav');
+
+        if (navToggle && siteNav) {
+            navToggle.addEventListener('click', function() {
+                const expanded = this.getAttribute('aria-expanded') === 'true' ? false : true;
+                this.setAttribute('aria-expanded', expanded);
+                siteNav.classList.toggle('is-open');
+                document.body.style.overflow = expanded ? 'hidden' : '';
+            });
+
+            // Close nav on link click (mobile)
+            document.querySelectorAll('.nav-link, .button').forEach(el => {
+                el.addEventListener('click', () => {
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    siteNav.classList.remove('is-open');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // ---- Lucide Icons ----
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
-        });
-
-        // ---- Mobile Nav Toggle ----
-        const navToggle = document.querySelector('.nav-toggle');
-        const siteNav = document.getElementById('site-nav');
-
-        navToggle.addEventListener('click', function() {
-            const expanded = this.getAttribute('aria-expanded') === 'true' ? false : true;
-            this.setAttribute('aria-expanded', expanded);
-            siteNav.classList.toggle('open');
-            document.body.style.overflow = expanded ? 'hidden' : '';
-        });
-
-        // Close nav on link click (mobile)
-        document.querySelectorAll('.nav-link, .button, .theme-toggle').forEach(el => {
-            el.addEventListener('click', () => {
-                navToggle.setAttribute('aria-expanded', 'false');
-                siteNav.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        });
-
-        // ---- Dark Mode ----
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-
-        function getPreferredTheme() {
-            const stored = localStorage.getItem('theme');
-            if (stored === 'dark' || stored === 'light') return stored;
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
-
-        function setTheme(theme) {
-            document.documentElement.classList.toggle('dark', theme === 'dark');
-            localStorage.setItem('theme', theme);
-            if (themeIcon) {
-                themeIcon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
-                if (typeof lucide !== 'undefined') lucide.createIcons();
-            }
-            // Update toggle text
-            const toggleText = themeToggle.querySelector('span');
-            if (toggleText) {
-                toggleText.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
-            }
-        }
-
-        const currentTheme = getPreferredTheme();
-        setTheme(currentTheme);
-
-        themeToggle.addEventListener('click', function() {
-            const next = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
-            setTheme(next);
         });
     </script>
 </body>
