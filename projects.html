@@ -5,7 +5,7 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="light" />
     <title>Projects | Peace Michael</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,24 +45,6 @@
             --nav-height: 4.5rem;
         }
 
-        .dark {
-            --bg: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-card: #1e293b;
-            --bg-hover: #334155;
-            --text: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            --border: #334155;
-            --border-light: #1e293b;
-            --primary: #3b82f6;
-            --primary-hover: #60a5fa;
-            --primary-light: #1e3a5f;
-            --primary-foreground: #ffffff;
-            --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-            --shadow-hover: 0 10px 40px rgba(0, 0, 0, 0.4);
-        }
-
         html {
             scroll-behavior: smooth;
         }
@@ -72,7 +54,6 @@
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
-            transition: background var(--transition), color var(--transition);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             padding-top: var(--nav-height);
@@ -124,13 +105,9 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
-            transition: background var(--transition), border-color var(--transition);
             height: var(--nav-height);
             display: flex;
             align-items: center;
-        }
-        .dark .site-header {
-            background: rgba(15, 23, 42, 0.85);
         }
 
         .nav-shell {
@@ -149,7 +126,6 @@
             font-weight: 700;
             font-size: 1.125rem;
             color: var(--text);
-            transition: color var(--transition);
         }
         .brand-mark {
             display: flex;
@@ -185,35 +161,38 @@
             background: none;
             border: none;
             cursor: pointer;
-            padding: 0.25rem;
-            width: 2rem;
-            height: 2rem;
+            padding: 0.5rem;
+            width: 2.75rem;
+            height: 2.75rem;
             justify-content: center;
             align-items: center;
-            border-radius: 0.375rem;
+            border-radius: 0.5rem;
             transition: background var(--transition);
+            position: relative;
+            z-index: 101;
+            flex-shrink: 0;
         }
         .nav-toggle:hover {
             background: var(--bg-hover);
         }
         .nav-toggle span {
             display: block;
-            width: 1.25rem;
-            height: 2px;
+            width: 1.5rem;
+            height: 2.5px;
             background: var(--text);
             border-radius: 2px;
             transition: all var(--transition);
             transform-origin: center;
         }
         .nav-toggle[aria-expanded="true"] span:nth-child(1) {
-            transform: rotate(45deg) translate(4px, 5px);
+            transform: rotate(45deg) translate(5px, 5px);
         }
         .nav-toggle[aria-expanded="true"] span:nth-child(2) {
             opacity: 0;
             transform: scaleX(0);
         }
         .nav-toggle[aria-expanded="true"] span:nth-child(3) {
-            transform: rotate(-45deg) translate(4px, -5px);
+            transform: rotate(-45deg) translate(5px, -5px);
         }
         @media (min-width: 768px) {
             .nav-toggle {
@@ -224,20 +203,29 @@
         .site-nav {
             display: none;
             flex-direction: column;
-            gap: 0.25rem;
-            position: absolute;
+            gap: 0.75rem;
+            position: fixed;
             top: var(--nav-height);
             left: 0;
             right: 0;
+            bottom: 0;
+            height: calc(100vh - var(--nav-height));
             background: var(--bg);
             border-bottom: 1px solid var(--border);
-            padding: 1rem 1.5rem;
-            box-shadow: var(--shadow);
-            z-index: 200;
-            transition: background var(--transition), border-color var(--transition);
+            padding: 3rem 2rem;
+            box-shadow: var(--shadow-hover);
+            overflow-y: auto;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
         }
         .site-nav.open {
             display: flex;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
         @media (min-width: 768px) {
             .site-nav {
@@ -250,17 +238,26 @@
                 padding: 0;
                 gap: 0.125rem;
                 align-items: center;
+                overflow-y: visible;
+                bottom: auto;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                height: auto;
             }
         }
 
         .nav-link {
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1rem;
             border-radius: var(--radius-full);
-            font-size: 0.875rem;
+            font-size: 1rem;
             font-weight: 500;
             color: var(--text-secondary);
             transition: all var(--transition);
             display: inline-block;
+            width: 100%;
+            text-align: left;
+            background: transparent;
         }
         .nav-link:hover {
             color: var(--text);
@@ -270,13 +267,12 @@
             color: var(--primary);
             background: var(--primary-light);
         }
-        .dark .nav-link.active {
-            color: var(--primary-hover);
-            background: rgba(59, 130, 246, 0.15);
-        }
         @media (min-width: 768px) {
             .nav-link {
                 padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+                width: auto;
+                text-align: center;
             }
         }
 
@@ -294,12 +290,9 @@
             font-family: var(--font);
             background: transparent;
             color: var(--text);
+            width: 100%;
         }
         .button-primary {
-            background: var(--text);
-            color: var(--bg);
-        }
-        .dark .button-primary {
             background: var(--text);
             color: var(--bg);
         }
@@ -315,26 +308,10 @@
             width: 1rem;
             height: 1rem;
         }
-
-        .theme-toggle {
-            background: none;
-            border: none;
-            padding: 0.5rem;
-            border-radius: var(--radius-full);
-            cursor: pointer;
-            color: var(--text-secondary);
-            transition: all var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .theme-toggle:hover {
-            background: var(--bg-hover);
-            color: var(--text);
-        }
-        .theme-toggle .lucide {
-            width: 1.25rem;
-            height: 1.25rem;
+        @media (min-width: 768px) {
+            .button {
+                width: auto;
+            }
         }
 
         /* ===== Main ===== */
@@ -400,10 +377,6 @@
             color: var(--primary-foreground);
             border-color: var(--primary);
         }
-        .dark .filter-pill.active {
-            background: var(--primary);
-            color: #fff;
-        }
         .filter-pill:focus-visible {
             outline: 2px solid var(--primary);
             outline-offset: 2px;
@@ -457,10 +430,6 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            transition: background var(--transition), color var(--transition);
-        }
-        .dark .project-icon {
-            background: rgba(59, 130, 246, 0.15);
         }
         .project-icon .lucide {
             width: 1.5rem;
@@ -508,10 +477,6 @@
             color: var(--text-secondary);
             border: 1px solid var(--border);
         }
-        .dark .project-tags span {
-            background: var(--bg-hover);
-            border-color: var(--border);
-        }
 
         .project-link {
             display: inline-flex;
@@ -541,7 +506,6 @@
             border-top: 1px solid var(--border);
             padding: 2rem 0;
             margin-top: 2rem;
-            transition: border-color var(--transition);
         }
         .footer-shell {
             display: flex;
@@ -662,9 +626,6 @@
                 <a class="nav-link" href="education.html">Education</a>
                 <a class="nav-link" href="contact.html">Contact</a>
                 <a class="button button-small button-primary" href="assets/Peace-Michael-CV.pdf" download>Download CV</a>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                    <i data-lucide="moon" id="themeIcon"></i>
-                </button>
             </nav>
         </div>
     </header>
@@ -847,40 +808,16 @@
             const expanded = this.getAttribute('aria-expanded') === 'true' ? false : true;
             this.setAttribute('aria-expanded', expanded);
             siteNav.classList.toggle('open');
+            document.body.style.overflow = expanded ? 'hidden' : '';
         });
 
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
+        // Close nav on link click (mobile)
+        document.querySelectorAll('.nav-link, .button').forEach(el => {
+            el.addEventListener('click', () => {
                 navToggle.setAttribute('aria-expanded', 'false');
                 siteNav.classList.remove('open');
+                document.body.style.overflow = '';
             });
-        });
-
-        // ---- Dark Mode ----
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-
-        function getPreferredTheme() {
-            const stored = localStorage.getItem('theme');
-            if (stored === 'dark' || stored === 'light') return stored;
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
-
-        function setTheme(theme) {
-            document.documentElement.classList.toggle('dark', theme === 'dark');
-            localStorage.setItem('theme', theme);
-            if (themeIcon) {
-                themeIcon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
-                if (typeof lucide !== 'undefined') lucide.createIcons();
-            }
-        }
-
-        const currentTheme = getPreferredTheme();
-        setTheme(currentTheme);
-
-        themeToggle.addEventListener('click', function() {
-            const next = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
-            setTheme(next);
         });
 
         // ---- Project Filtering ----
